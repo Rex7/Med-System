@@ -36,6 +36,9 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
             public void onClick(View v) {
                 Toast.makeText(mContext," "+medNames.get(position),Toast.LENGTH_LONG).show();
 
+
+
+
             }
         });
     }
