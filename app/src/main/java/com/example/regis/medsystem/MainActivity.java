@@ -1,15 +1,18 @@
 package com.example.regis.medsystem;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.NavigationView;
+import android.support.design.widget.Snackbar;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
 import android.view.MenuItem;
 
 
@@ -18,6 +21,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     ActionBarDrawerToggle actionBarDrawerToggle;
     Toolbar toolbar;
     NavigationView nav;
+    Snackbar snackbar;
 
 
     @Override
@@ -56,4 +60,30 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         return true;
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+
+        switch (item.getItemId()) {
+            case R.id.search:
+                snackbar = Snackbar.make(getCurrentFocus(), "Search", Snackbar.LENGTH_SHORT)
+                        .setActionTextColor(Color.BLUE)
+                        .setAction("Hey am in search", null);
+                snackbar.show();
+                break;
+            case R.id.share:
+                snackbar = Snackbar.make(getCurrentFocus(), "Share", Snackbar.LENGTH_SHORT)
+                        .setActionTextColor(Color.BLUE)
+                        .setAction("Share", null);
+                snackbar.show();
+
+        }
+        return true;
+    }
 }

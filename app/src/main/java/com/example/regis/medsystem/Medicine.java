@@ -1,7 +1,8 @@
 package com.example.regis.medsystem;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.design.widget.CollapsingToolbarLayout;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
@@ -15,12 +16,15 @@ public class Medicine extends AppCompatActivity {
 Toolbar toolbar;
     RecyclerView recyclerView;
     List<String> medName=new ArrayList<>();
+    CollapsingToolbarLayout collapsingToolbarLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_medicine);
         recyclerView=(RecyclerView)findViewById(R.id.recycle);
+        collapsingToolbarLayout = (CollapsingToolbarLayout) findViewById(R.id.collapse);
+        collapsingToolbarLayout.setTitle("Medicine M");
         toolbar = (Toolbar) findViewById(R.id.toolBar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("Medicine");

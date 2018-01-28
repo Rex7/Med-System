@@ -9,7 +9,7 @@
 
     android:fitsSystemWindows="true"
     tools:context="com.example.regis.medsystem.MainActivity"
-    >
+    tools:openDrawer="start">
 
     <android.support.design.widget.CoordinatorLayout
         android:id="@+id/CoordinateLayout"
@@ -34,20 +34,21 @@
 
 
     </android.support.design.widget.CoordinatorLayout>
-  <RelativeLayout
-      android:layout_width="match_parent"
-      android:layout_height="match_parent"
-      android:id="@+id/relativeLayout"
-      >
+
+    <RelativeLayout
+        android:id="@+id/relativeLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
 
-  </RelativeLayout>
+    </RelativeLayout>
 
     <android.support.design.widget.NavigationView
         android:id="@+id/nav"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_gravity="start"
+        app:headerLayout="@layout/nav_header"
         app:menu="@menu/nav_item">
 
     </android.support.design.widget.NavigationView>

@@ -2,11 +2,28 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <group android:checkableBehavior="single">
 
-        <item android:id="@+id/Med"
-            android:title="Medicine"
-
+        <item
+            android:id="@+id/Med"
             android:icon="@android:drawable/ic_menu_search"
-            />
-
+            android:title="Medicine" />
+        <item
+            android:id="@+id/Symtom_analyser"
+            android:icon="@mipmap/ic_launcher"
+            android:title="Symtom analyser" />
     </group>
+    <item android:title="Details">
+        <menu>
+            <item
+                android:id="@+id/AboustUs"
+                android:icon="@mipmap/ic_launcher"
+                android:title="About Us" />
+            <item
+                android:id="@+id/rateUs"
+                android:icon="@android:drawable/star_big_on"
+                android:title="Rate App" />
+
+        </menu>
+    </item>
+
+
 </menu>
