@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">MedSystem</string>
+    <string name="app_name">MedApp</string>
     <string name="open_navigation">Open</string>
     <string name="close_navigation">Close</string>
 </resources>

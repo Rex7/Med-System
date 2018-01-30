@@ -14,6 +14,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ImageView;
+
+import com.bumptech.glide.Glide;
 
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
@@ -22,6 +25,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     Toolbar toolbar;
     NavigationView nav;
     Snackbar snackbar;
+    ImageView coverImage;
 
 
     @Override
@@ -31,7 +35,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         nav = (NavigationView) findViewById(R.id.nav);
         nav.setNavigationItemSelectedListener(this);
         toolbar = (Toolbar) findViewById(R.id.toolBar);
-
+        coverImage = (ImageView) findViewById(R.id.medCover);
+        Glide.with(this).load(R.drawable.medimage)
+                .into(coverImage);
         setSupportActionBar(toolbar);
         drawerLayout = (DrawerLayout) findViewById(R.id.drawer);
         actionBarDrawerToggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar,

@@ -15,7 +15,7 @@ import java.util.List;
 public class Medicine extends AppCompatActivity {
 Toolbar toolbar;
     RecyclerView recyclerView;
-    List<String> medName=new ArrayList<>();
+    List<Drug> medName = new ArrayList<>();
     CollapsingToolbarLayout collapsingToolbarLayout;
 
     @Override
@@ -42,22 +42,26 @@ Toolbar toolbar;
         super.onBackPressed();
     }
     public void addData(){
-        medName.add("Paracetamol 500mg Tab ");
-        medName.add("Aceclofenac ");
-        medName.add("PPentazocine 30 mg ");
-        medName.add("Nimesulide 100 mg Tab  ");
-        medName.add("Indomethacin 25 mg Cap");
-        medName.add("Ibuprofen film coated Tablets IP 200mg");
-        medName.add("Ibuprofen 400mg + Paracetamol 325 mg Tab");
-        medName.add("Etoricoxilb 120mg Tab");
-        medName.add("Etoricoxilb 90mg Tab");
-        medName.add("Etoricoxilb 90mg Tab");
-        medName.add("Etoricoxilb 90mg Tab");
-        medName.add("Etoricoxilb 90mg Tab");
-        medName.add("Etoricoxilb 90mg Tab");
-        medName.add("Etoricoxilb 90mg Tab");
-        medName.add("Etoricoxilb 90mg Tab");
-        medName.add("Etoricoxilb 90mg Tab");
+        medName.add(new Drug("Paracetamol 500mg Tab "));
+        medName.add(new Drug("Aceclofenac "));
+        medName.add(new Drug("PPentazocine 30 mg "));
+        medName.add(new Drug("Nimesulide 100 mg Tab  "));
+        medName.add(new Drug("Indomethacin 25 mg Cap"));
+        medName.add(new Drug("Ibuprofen film coated Tablets IP 200mg"));
+        medName.add(new Drug("Ibuprofen 400mg + Paracetamol 325 mg Tab"));
+        medName.add(new Drug("Etoricoxilb 120mg Tab"));
+        medName.add(new Drug("Etoricoxilb 120mg Tab"));
+        medName.add(new Drug("Etoricoxilb 120mg Tab"));
+        medName.add(new Drug("Etoricoxilb 120mg Tab"));
+        medName.add(new Drug("Etoricoxilb 120mg Tab"));
+        medName.add(new Drug("Etoricoxilb 120mg Tab"));
+        medName.add(new Drug("Etoricoxilb 120mg Tab"));
+        medName.add(new Drug("Etoricoxilb 120mg Tab"));
+        medName.add(new Drug("Etoricoxilb 120mg Tab"));
+        medName.add(new Drug("Etoricoxilb 120mg Tab"));
+        medName.add(new Drug("Etoricoxilb 120mg Tab"));
+
+
 
 
 

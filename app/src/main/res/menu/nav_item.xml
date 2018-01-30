@@ -4,7 +4,7 @@
 
         <item
             android:id="@+id/Med"
-            android:icon="@android:drawable/ic_menu_search"
+            android:icon="@drawable/ic_pill"
             android:title="Medicine" />
         <item
             android:id="@+id/Symtom_analyser"
@@ -15,11 +15,11 @@
         <menu>
             <item
                 android:id="@+id/AboustUs"
-                android:icon="@mipmap/ic_launcher"
+                android:icon="@drawable/ic_people"
                 android:title="About Us" />
             <item
                 android:id="@+id/rateUs"
-                android:icon="@android:drawable/star_big_on"
+                android:icon="@drawable/ic_star"
                 android:title="Rate App" />
 
         </menu>
