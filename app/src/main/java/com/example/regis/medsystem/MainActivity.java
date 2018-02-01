@@ -11,13 +11,14 @@ import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
-
-import com.bumptech.glide.Glide;
 
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, View.OnClickListener {
@@ -27,6 +28,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     NavigationView nav;
     Snackbar snackbar;
     ImageView coverImage, fav, bookmark, share;
+    RecyclerView recyclerView;
+    recycler_mainAdapter recycler_mainAdapter;
 
 
     @Override
@@ -36,16 +39,31 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         nav = (NavigationView) findViewById(R.id.nav);
         nav.setNavigationItemSelectedListener(this);
         toolbar = (Toolbar) findViewById(R.id.toolBar);
-        coverImage = (ImageView) findViewById(R.id.medCover);
+        setSupportActionBar(toolbar);
+        recyclerView = (RecyclerView) findViewById(R.id.recycler_main);
+        recycler_mainAdapter = new recycler_mainAdapter(this);
+
+        recyclerView.setItemAnimator(new DefaultItemAnimator());
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.setAdapter(recycler_mainAdapter);
+
+
+
+
+       /* coverImage = (ImageView) findViewById(R.id.medCover);
         fav = (ImageView) findViewById(R.id.fav);
         bookmark = (ImageView) findViewById(R.id.bookmark);
         share = (ImageView) findViewById(R.id.share_art);
         fav.setOnClickListener(this);
         bookmark.setOnClickListener(this);
         share.setOnClickListener(this);
-        Glide.with(this).load(R.drawable.medimage)
+          Glide.with(this).load(R.drawable.medimage)
                 .into(coverImage);
-        setSupportActionBar(toolbar);
+        */
+
+
+
+
         drawerLayout = (DrawerLayout) findViewById(R.id.drawer);
         actionBarDrawerToggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar,
                 R.string.open_navigation, R.string.close_navigation);
