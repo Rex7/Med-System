@@ -14,18 +14,19 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
 
 
-public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, View.OnClickListener {
     DrawerLayout drawerLayout;
     ActionBarDrawerToggle actionBarDrawerToggle;
     Toolbar toolbar;
     NavigationView nav;
     Snackbar snackbar;
-    ImageView coverImage;
+    ImageView coverImage, fav, bookmark, share;
 
 
     @Override
@@ -36,6 +37,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         nav.setNavigationItemSelectedListener(this);
         toolbar = (Toolbar) findViewById(R.id.toolBar);
         coverImage = (ImageView) findViewById(R.id.medCover);
+        fav = (ImageView) findViewById(R.id.fav);
+        bookmark = (ImageView) findViewById(R.id.bookmark);
+        share = (ImageView) findViewById(R.id.share_art);
+        fav.setOnClickListener(this);
+        bookmark.setOnClickListener(this);
+        share.setOnClickListener(this);
         Glide.with(this).load(R.drawable.medimage)
                 .into(coverImage);
         setSupportActionBar(toolbar);
@@ -91,5 +98,31 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         }
         return true;
+    }
+
+    @Override
+    public void onClick(View v) {
+        int id = v.getId();
+        switch (id) {
+            case R.id.fav:
+                snackbar = Snackbar.make(v, "favorite", Snackbar.LENGTH_SHORT)
+                        .setAction("Fav", null)
+                        .setActionTextColor(Color.RED);
+                snackbar.show();
+                break;
+            case R.id.share_art:
+                snackbar = Snackbar.make(v, "share", Snackbar.LENGTH_SHORT)
+                        .setAction("bookmark", null)
+                        .setActionTextColor(Color.RED);
+                snackbar.show();
+                break;
+            case R.id.bookmark:
+                snackbar = Snackbar.make(v, "bookmark", Snackbar.LENGTH_SHORT)
+                        .setAction("bookmark", null)
+                        .setActionTextColor(Color.RED);
+                snackbar.show();
+                break;
+
+        }
     }
 }
