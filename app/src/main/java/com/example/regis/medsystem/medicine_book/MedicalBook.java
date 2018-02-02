@@ -22,8 +22,11 @@ public class MedicalBook extends AppCompatActivity {
         recyclerView = (RecyclerView) findViewById(R.id.medBook);
         MedicineBookAdapter medicineBookAdapter = new MedicineBookAdapter(this);
         recyclerView.setLayoutManager(new GridLayoutManager(this, 2));
-        recyclerView.setAdapter(medicineBookAdapter);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
+        int spaceP = getResources().getDimensionPixelSize(R.dimen.spacing);
+        recyclerView.addItemDecoration(new SpaceDecoration(spaceP));
+        recyclerView.setAdapter(medicineBookAdapter);
+
 
 
     }

@@ -20,9 +20,9 @@ public class MedicineBookAdapter extends RecyclerView.Adapter<MedicineBookAdapte
     }
 
 
-    private String[] title = {"Essentials of Medical Pharmacology", "Clinical Methods", "Principles and practice of medicine", "Fuctional Histology"};
-    private String[] authorName = {" KD Tripathi,", "Robert", "DavidSon", "Wheater's"};
-    private int[] bookCover = {R.drawable.medbookcover, R.drawable.cover, R.drawable.mymedcover, R.drawable.medimage};
+    private String[] title = {"Essentials of Medical Pharmacology", "Clinical Methods", "Principles and practice of medicine", "Fuctional Histology", "live life"};
+    private String[] authorName = {" KD Tripathi,", "Robert", "DavidSon", "Wheater's", "Regis"};
+    private int[] bookCover = {R.drawable.medbookcover, R.drawable.medbookcover, R.drawable.mymedcover, R.drawable.medimage, R.drawable.medimage};
 
 
     @Override
