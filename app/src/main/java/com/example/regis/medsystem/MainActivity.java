@@ -18,7 +18,8 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ImageView;
+
+import com.example.regis.medsystem.medicine.Medicine;
 
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, View.OnClickListener {
@@ -27,7 +28,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     Toolbar toolbar;
     NavigationView nav;
     Snackbar snackbar;
-    ImageView coverImage, fav, bookmark, share;
     RecyclerView recyclerView;
     recycler_mainAdapter recycler_mainAdapter;
 
@@ -40,27 +40,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         nav.setNavigationItemSelectedListener(this);
         toolbar = (Toolbar) findViewById(R.id.toolBar);
         setSupportActionBar(toolbar);
+        //DrawerLayout declaration
         recyclerView = (RecyclerView) findViewById(R.id.recycler_main);
         recycler_mainAdapter = new recycler_mainAdapter(this);
-
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(recycler_mainAdapter);
-
-
-
-
-       /* coverImage = (ImageView) findViewById(R.id.medCover);
-        fav = (ImageView) findViewById(R.id.fav);
-        bookmark = (ImageView) findViewById(R.id.bookmark);
-        share = (ImageView) findViewById(R.id.share_art);
-        fav.setOnClickListener(this);
-        bookmark.setOnClickListener(this);
-        share.setOnClickListener(this);
-          Glide.with(this).load(R.drawable.medimage)
-                .into(coverImage);
-        */
-
 
 
 

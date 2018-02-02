@@ -17,7 +17,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".Medicine"
+            android:name=".medicine.Medicine"
             android:parentActivityName=".MainActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -25,9 +25,8 @@
         </activity>
         <activity
             android:name=".MedDetails"
-            android:parentActivityName=".Medicine">
-
-        </activity>
+            android:parentActivityName=".medicine.Medicine"></activity>
+        <activity android:name=".medicine_book.MedicalBook"></activity>
     </application>
 
 </manifest>

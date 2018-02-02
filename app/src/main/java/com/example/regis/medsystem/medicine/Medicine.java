@@ -1,4 +1,4 @@
-package com.example.regis.medsystem;
+package com.example.regis.medsystem.medicine;
 
 import android.os.Bundle;
 import android.support.design.widget.CollapsingToolbarLayout;
@@ -8,6 +8,9 @@ import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+
+import com.example.regis.medsystem.Drug;
+import com.example.regis.medsystem.R;
 
 import java.util.ArrayList;
 import java.util.List;
