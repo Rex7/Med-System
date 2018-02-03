@@ -11,7 +11,8 @@
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:cardCornerRadius="2dp"
+        app:cardCornerRadius="4dp"
+        app:cardBackgroundColor="#fafcfd"
         app:cardElevation="4dp"
 
 
@@ -25,13 +26,14 @@
                 android:id="@+id/book_cover"
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
+                android:src="@drawable/medbookcover"
                 android:scaleType="fitXY" />
 
             <TextView
                 android:id="@+id/title_book"
                 android:layout_below="@id/book_cover"
                 android:text="Essentials of Medical Pharmacology"
-                android:width="250dp"
+
                 android:layout_marginLeft="10dp"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
                 android:layout_width="wrap_content"

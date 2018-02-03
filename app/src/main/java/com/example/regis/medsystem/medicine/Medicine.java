@@ -27,7 +27,7 @@ Toolbar toolbar;
         setContentView(R.layout.activity_medicine);
         recyclerView=(RecyclerView)findViewById(R.id.recycle);
         collapsingToolbarLayout = (CollapsingToolbarLayout) findViewById(R.id.collapse);
-        collapsingToolbarLayout.setTitle("Medicine M");
+        collapsingToolbarLayout.setTitle("Medicine");
         toolbar = (Toolbar) findViewById(R.id.toolBar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("Medicine");

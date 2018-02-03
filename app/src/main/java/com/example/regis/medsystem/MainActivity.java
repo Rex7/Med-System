@@ -17,12 +17,11 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 
 import com.example.regis.medsystem.medicine.Medicine;
 
 
-public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, View.OnClickListener {
+public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     DrawerLayout drawerLayout;
     ActionBarDrawerToggle actionBarDrawerToggle;
     Toolbar toolbar;
@@ -103,29 +102,5 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         return true;
     }
 
-    @Override
-    public void onClick(View v) {
-        int id = v.getId();
-        switch (id) {
-            case R.id.fav:
-                snackbar = Snackbar.make(v, "favorite", Snackbar.LENGTH_SHORT)
-                        .setAction("Fav", null)
-                        .setActionTextColor(Color.RED);
-                snackbar.show();
-                break;
-            case R.id.share_art:
-                snackbar = Snackbar.make(v, "share", Snackbar.LENGTH_SHORT)
-                        .setAction("bookmark", null)
-                        .setActionTextColor(Color.RED);
-                snackbar.show();
-                break;
-            case R.id.bookmark:
-                snackbar = Snackbar.make(v, "bookmark", Snackbar.LENGTH_SHORT)
-                        .setAction("bookmark", null)
-                        .setActionTextColor(Color.RED);
-                snackbar.show();
-                break;
 
-        }
-    }
 }

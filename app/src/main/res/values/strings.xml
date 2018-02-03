@@ -2,4 +2,6 @@
     <string name="app_name">MedApp</string>
     <string name="open_navigation">Open</string>
     <string name="close_navigation">Close</string>
+    <string name="medicine">Medicine</string>
+    <string name="book">Books</string>
 </resources>

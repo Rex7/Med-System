@@ -39,48 +39,28 @@
             android:layout_below="@+id/line"
             android:layout_marginLeft="15dp"
             android:layout_marginTop="15dp"
-            android:background="?attr/selectableItemBackground"
+
             android:text="R&amp;D"
             android:textColor="#941919"
             android:textSize="25sp" />
 
-        <ImageView
-            android:id="@+id/share_art"
-            android:layout_width="36dp"
-            android:layout_height="36dp"
-            android:layout_alignTop="@+id/bookmark"
-            android:layout_marginEnd="31dp"
-            android:layout_marginRight="31dp"
-            android:layout_toLeftOf="@+id/bookmark"
-            android:layout_toStartOf="@+id/bookmark"
-            android:background="?attr/selectableItemBackground"
-            android:clickable="true"
-            android:scaleType="centerCrop"
-            android:src="@drawable/ic_share" />
 
-        <ImageView
-            android:id="@+id/bookmark"
-            android:layout_width="36dp"
-            android:layout_height="36dp"
-            android:layout_alignTop="@+id/fav"
-            android:layout_marginEnd="16dp"
-            android:layout_marginRight="16dp"
-            android:layout_toLeftOf="@+id/fav"
-            android:layout_toStartOf="@+id/fav"
-            android:background="?attr/selectableItemBackground"
-            android:clickable="true"
-            android:src="@drawable/ic_bookmark" />
+        <Button
+            android:id="@+id/explore"
+            android:text="Explore"
+            android:layout_marginBottom="12dp"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:textColor="@color/colorAccent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
 
-        <ImageView
-            android:id="@+id/fav"
-            android:layout_width="36dp"
-            android:layout_height="36dp"
-            android:layout_alignParentEnd="true"
+            android:clickable="true"
+            android:layout_alignBaseline="@+id/title_adp"
+            android:layout_alignBottom="@+id/title_adp"
             android:layout_alignParentRight="true"
-            android:layout_alignTop="@+id/title_adp"
-            android:background="?attr/selectableItemBackground"
-            android:clickable="true"
-            android:src="@drawable/ic_fav" />
+            android:backgroundTintMode="add"
+            android:backgroundTint="@color/colorPrimary"
+            android:layout_alignParentEnd="true" />
 
 
     </RelativeLayout>

@@ -7,6 +7,7 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 
+import com.example.regis.medsystem.GridSpacingItemDecoration;
 import com.example.regis.medsystem.R;
 
 public class MedicalBook extends AppCompatActivity {
@@ -19,12 +20,15 @@ public class MedicalBook extends AppCompatActivity {
         setContentView(R.layout.activity_medical_book);
         toolbar = (Toolbar) findViewById(R.id.toolbarMedBook);
         setSupportActionBar(toolbar);
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setTitle("Medicine Books");
+        }
         recyclerView = (RecyclerView) findViewById(R.id.medBook);
         MedicineBookAdapter medicineBookAdapter = new MedicineBookAdapter(this);
         recyclerView.setLayoutManager(new GridLayoutManager(this, 2));
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         int spaceP = getResources().getDimensionPixelSize(R.dimen.spacing);
-        recyclerView.addItemDecoration(new SpaceDecoration(spaceP));
+        recyclerView.addItemDecoration(new GridSpacingItemDecoration(2, spaceP, true));
         recyclerView.setAdapter(medicineBookAdapter);
 
 

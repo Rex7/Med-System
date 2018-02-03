@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#c7b6b6"
     tools:context="com.example.regis.medsystem.medicine_book.MedicalBook">
 
     <android.support.design.widget.CoordinatorLayout
