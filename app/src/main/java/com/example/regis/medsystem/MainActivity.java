@@ -69,6 +69,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         if (item.getItemId() == R.id.Med)
             startActivity(new Intent(this, Medicine.class));
+        else if (item.getItemId() == R.id.medEnter) {
+            startActivity(new Intent(this, MedicineEnter.class));
+        }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer);
         drawer.closeDrawer(GravityCompat.START);

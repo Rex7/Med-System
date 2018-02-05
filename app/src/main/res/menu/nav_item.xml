@@ -18,9 +18,9 @@
                 android:icon="@drawable/ic_people"
                 android:title="About Us" />
             <item
-                android:id="@+id/rateUs"
+                android:id="@+id/medEnter"
                 android:icon="@drawable/ic_star"
-                android:title="Rate App" />
+                android:title="Enter Medicine" />
 
         </menu>
     </item>
