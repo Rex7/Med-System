@@ -18,7 +18,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import com.example.regis.medsystem.medicine.Medicine;
+import com.example.regis.medsystem.medicine.MedicineActivity;
 
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
@@ -68,7 +68,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 
         if (item.getItemId() == R.id.Med)
-            startActivity(new Intent(this, Medicine.class));
+            startActivity(new Intent(this, MedicineActivity.class));
         else if (item.getItemId() == R.id.medEnter) {
             startActivity(new Intent(this, MedicineEnter.class));
         }

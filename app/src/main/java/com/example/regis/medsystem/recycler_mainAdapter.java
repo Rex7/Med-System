@@ -12,7 +12,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
-import com.example.regis.medsystem.medicine.Medicine;
+import com.example.regis.medsystem.medicine.MedicineActivity;
 import com.example.regis.medsystem.medicine_book.MedicalBook;
 
 
@@ -24,7 +24,7 @@ public class recycler_mainAdapter extends RecyclerView.Adapter<recycler_mainAdap
     }
 
 
-    private String[] array_title = {"R&D", "Disease", "Medicine", "Books"};
+    private String[] array_title = {"R&D", "Disease", "MedicineActivity", "Books"};
     private int[] drawable_array = {R.drawable.medimage, R.drawable.mymedcover, R.drawable.medimage, R.drawable.medbookcover};
 
 
@@ -69,8 +69,8 @@ public class recycler_mainAdapter extends RecyclerView.Adapter<recycler_mainAdap
         public void onClick(View v) {
             switch (v.getId()) {
                 case R.id.explore:
-                    if (title.getText().equals("Medicine")) {
-                        cont.startActivity(new Intent(cont, Medicine.class));
+                    if (title.getText().equals("MedicineActivity")) {
+                        cont.startActivity(new Intent(cont, MedicineActivity.class));
                     } else if (title.getText().equals("Books")) {
                         cont.startActivity(new Intent(cont, MedicalBook.class));
                     }

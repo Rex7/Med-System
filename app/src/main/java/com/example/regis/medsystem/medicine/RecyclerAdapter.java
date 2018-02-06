@@ -9,19 +9,19 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.regis.medsystem.Drug;
 import com.example.regis.medsystem.MedDetails;
 import com.example.regis.medsystem.R;
+import com.example.regis.medsystem.database.Medicine;
 
 import java.util.List;
 
 
 
 public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHolders> {
-    private List<Drug> medNames;
+    private List<Medicine> medNames;
     private Context mContext;
 
-    public RecyclerAdapter(List<Drug> medNames, Context mContext) {
+    public RecyclerAdapter(List<Medicine> medNames, Context mContext) {
         this.medNames = medNames;
         this.mContext=mContext;
     }
@@ -34,7 +34,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
 
     @Override
     public void onBindViewHolder(ViewHolders holder, final int position) {
-        holder.medName.setText(medNames.get(position).getDrugName());
+        holder.medName.setText(medNames.get(position).getMedName());
 
     }
 
@@ -63,7 +63,7 @@ TextView medName;
 
 
             Intent intent = new Intent(ct, MedDetails.class);
-            intent.putExtra("drug_name", medNames.get(pos).getDrugName());
+            intent.putExtra("drug_name", medNames.get(pos).getMedName());
             this.ct.startActivity(intent);
         }
     }

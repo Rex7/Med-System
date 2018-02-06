@@ -21,7 +21,7 @@ public class MedicalBook extends AppCompatActivity {
         toolbar = (Toolbar) findViewById(R.id.toolbarMedBook);
         setSupportActionBar(toolbar);
         if (getSupportActionBar() != null) {
-            getSupportActionBar().setTitle("Medicine Books");
+            getSupportActionBar().setTitle("MedicineActivity Books");
         }
         recyclerView = (RecyclerView) findViewById(R.id.medBook);
         MedicineBookAdapter medicineBookAdapter = new MedicineBookAdapter(this);
