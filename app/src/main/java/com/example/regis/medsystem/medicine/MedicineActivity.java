@@ -32,7 +32,7 @@ public class MedicineActivity extends AppCompatActivity {
         setContentView(R.layout.activity_medicine);
         recyclerView = (RecyclerView) findViewById(R.id.recycle);
         collapsingToolbarLayout = (CollapsingToolbarLayout) findViewById(R.id.collapse);
-        collapsingToolbarLayout.setTitle("MedicineActivity");
+        collapsingToolbarLayout.setTitle("Medicine");
         toolbar = (Toolbar) findViewById(R.id.toolBar);
         setSupportActionBar(toolbar);
         if (getSupportActionBar() != null) {

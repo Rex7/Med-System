@@ -29,7 +29,15 @@
             android:name=".MedDetails"
             android:parentActivityName=".medicine.MedicineActivity" />
         <activity android:name=".medicine_book.MedicalBook" />
-        <activity android:name=".AboutUs" />
+        <activity
+            android:name=".AboutUs"
+            android:parentActivityName=".MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity" />
+
+
+        </activity>
         <activity android:name=".MedicineEnter" />
     </application>
 

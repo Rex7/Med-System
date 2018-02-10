@@ -67,10 +67,18 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 
-        if (item.getItemId() == R.id.Med)
-            startActivity(new Intent(this, MedicineActivity.class));
-        else if (item.getItemId() == R.id.medEnter) {
-            startActivity(new Intent(this, MedicineEnter.class));
+
+        switch (item.getItemId()) {
+            case R.id.Med:
+                startActivity(new Intent(this, MedicineActivity.class));
+                break;
+            case R.id.medEnter:
+                startActivity(new Intent(this, MedicineEnter.class));
+                break;
+            case R.id.AboustUs:
+                startActivity(new Intent(this, AboutUs.class));
+                break;
+
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer);

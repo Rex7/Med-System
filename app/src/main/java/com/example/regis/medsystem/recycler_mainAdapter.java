@@ -24,7 +24,7 @@ public class recycler_mainAdapter extends RecyclerView.Adapter<recycler_mainAdap
     }
 
 
-    private String[] array_title = {"R&D", "Disease", "MedicineActivity", "Books"};
+    private String[] array_title = {"R&D", "Disease", "Medicine", "Books"};
     private int[] drawable_array = {R.drawable.medimage, R.drawable.mymedcover, R.drawable.medimage, R.drawable.medbookcover};
 
 
@@ -69,7 +69,7 @@ public class recycler_mainAdapter extends RecyclerView.Adapter<recycler_mainAdap
         public void onClick(View v) {
             switch (v.getId()) {
                 case R.id.explore:
-                    if (title.getText().equals("MedicineActivity")) {
+                    if (title.getText().equals("Medicine")) {
                         cont.startActivity(new Intent(cont, MedicineActivity.class));
                     } else if (title.getText().equals("Books")) {
                         cont.startActivity(new Intent(cont, MedicalBook.class));
