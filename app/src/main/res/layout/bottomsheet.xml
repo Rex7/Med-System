@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/bottom_sheet"
+
+
+    >
+
+    <android.support.design.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true">
+
+        <RelativeLayout
+            android:id="@+id/mainBody"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/med_Name_bottom"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="1dp"
+                android:text="Name  :"
+                android:textColor="#000"
+                android:textSize="25sp" />
+
+            <TextView
+                android:id="@+id/Name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="150dp"
+                android:layout_toRightOf="@+id/med_Name_bottom"
+                android:text="Crocin"
+                android:textColor="#000"
+                android:textSize="25sp" />
+
+            <TextView
+                android:id="@+id/botton_price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/med_Name_bottom"
+                android:layout_marginTop="25dp"
+                android:text="Price"
+                android:textColor="#000"
+                android:textSize="25sp" />
+
+            <TextView
+                android:id="@+id/botton_price_name"
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@+id/botton_price"
+                android:layout_alignBottom="@+id/botton_price"
+                android:layout_alignEnd="@+id/Name"
+                android:layout_alignRight="@+id/Name"
+                android:text="₹5"
+                android:textColor="#000"
+                android:textSize="25sp" />
+
+            <TextView
+                android:id="@+id/botton_Usage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/botton_price"
+                android:layout_marginTop="25dp"
+                android:text="Usage "
+                android:textColor="#000"
+                android:textSize="25sp" />
+
+            <TextView
+                android:id="@+id/botton_USage_text"
+
+                android:layout_width="200dp"
+                android:layout_marginLeft="70dp"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@+id/botton_Usage"
+
+
+                android:layout_below="@+id/botton_price_name"
+                android:layout_toRightOf="@+id/botton_Usage"
+                android:text="It is used for bringing down the fever
+and bring body temperature to normal"
+                android:textColor="#000"
+                android:textSize="25sp" />
+
+            <TextView
+                android:id="@+id/sideEffects"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/botton_USage_text"
+                android:text="Avoid usage During"
+
+                android:textColor="#000"
+                android:textSize="25sp" />
+
+            <TextView
+                android:id="@+id/sideEffectsText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@+id/sideEffects"
+                android:layout_toRightOf="@+id/sideEffects"
+                android:text="Avoid Using when consumed alcohol and during pregnancy"
+                android:textColor="#000"
+                android:textSize="25sp" />
+
+
+        </RelativeLayout>
+
+    </android.support.design.widget.CoordinatorLayout>
+
+</RelativeLayout>

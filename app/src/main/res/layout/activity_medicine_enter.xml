@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.regis.medsystem.MedicineEnter">
+
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/appbarLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <include layout="@layout/toolbar"
+
+            />
+
+
+    </android.support.design.widget.AppBarLayout>
+
+    <EditText
+        android:layout_below="@+id/appbarLayout"
+        android:id="@+id/medicineName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter medicine Name" />
+
+    <EditText
+        android:id="@+id/medicineCategory"
+        android:layout_below="@+id/medicineName"
+        android:layout_width="match_parent"
+        android:hint="Enter medicine category"
+        android:layout_height="wrap_content" />
+
+    <EditText
+        android:id="@+id/medicinePrice"
+        android:layout_below="@+id/medicineCategory"
+        android:hint="Enter medicine Price"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:id="@+id/insert"
+        android:text="Insert"
+        android:layout_below="@+id/medicinePrice"
+        android:layout_centerHorizontal="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:id="@+id/showAll"
+        android:text="ShowAll"
+        android:layout_below="@+id/insert"
+        android:layout_width="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_height="wrap_content" />
+
+</RelativeLayout>
