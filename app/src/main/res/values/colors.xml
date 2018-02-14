@@ -4,4 +4,5 @@
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
     <color name="myripple">#f265c5</color>
+    <color name="Transparen">#e2fdf9f8</color>
 </resources>

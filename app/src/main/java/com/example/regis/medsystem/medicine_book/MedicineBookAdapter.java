@@ -2,6 +2,7 @@ package com.example.regis.medsystem.medicine_book;
 
 import android.content.Context;
 import android.content.Intent;
+import android.support.design.widget.Snackbar;
 import android.support.v7.widget.PopupMenu;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -85,7 +86,7 @@ public class MedicineBookAdapter extends RecyclerView.Adapter<MedicineBookAdapte
 
     }
 
-    public void showPopUp(final Context con, View v) {
+    public void showPopUp(final Context con, final View v) {
         PopupMenu popupMenu = new PopupMenu(con, v);
         MenuInflater menuInflater = popupMenu.getMenuInflater();
         menuInflater.inflate(R.menu.med_book_menu, popupMenu.getMenu());
@@ -102,7 +103,9 @@ public class MedicineBookAdapter extends RecyclerView.Adapter<MedicineBookAdapte
                         con.startActivity(intent);
                         break;
                     case R.id.download:
-                        Toast.makeText(con, "Share", Toast.LENGTH_LONG).show();
+
+                        Snackbar snackbar = Snackbar.make(v, "download has been clicked", Snackbar.LENGTH_LONG).setAction("download", null);
+                        snackbar.show();
                 }
                 return true;
             }
