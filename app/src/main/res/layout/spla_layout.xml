@@ -22,10 +22,10 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="65dp"
         android:gravity="center_horizontal"
-        android:typeface="monospace"
-        android:textColor="#2c34d2"
         android:text="sapiente quas molestias excepturi sintccaecati cupiditate non provident, caecati cupiditate non "
-        android:textSize="18sp" />
+        android:textColor="#2c34d2"
+        android:textSize="18sp"
+        android:typeface="monospace" />
 
     <TextView
         android:id="@+id/Heading"

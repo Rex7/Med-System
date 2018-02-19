@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 public class Splash extends AppCompatActivity {
     ViewPager viewPager;
+    int count = 0;
     ViewPagerAdapter viewPagerAdapter;
     LinearLayout dots_layout;
     TextView dots[];

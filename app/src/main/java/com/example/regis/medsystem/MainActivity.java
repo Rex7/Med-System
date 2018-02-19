@@ -78,6 +78,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             case R.id.AboustUs:
                 startActivity(new Intent(this, AboutUs.class));
                 break;
+            case R.id.Symtom_analyser:
+                startActivity(new Intent(this, VolleyExample.class));
 
         }
 

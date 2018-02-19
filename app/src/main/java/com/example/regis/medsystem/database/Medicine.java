@@ -3,6 +3,7 @@ package com.example.regis.medsystem.database;
 
 import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.Ignore;
 import android.arch.persistence.room.PrimaryKey;
 
 @Entity(tableName = "medicine")
@@ -17,6 +18,17 @@ public class Medicine {
     @ColumnInfo(name = "price")
     private int price;
 
+    public Medicine(int medId, String medName, String category, int price) {
+        this.medId = medId;
+        this.medName = medName;
+        this.category = category;
+        this.price = price;
+    }
+
+    @Ignore
+    public Medicine() {
+
+    }
     public String getMedName() {
         return medName;
     }

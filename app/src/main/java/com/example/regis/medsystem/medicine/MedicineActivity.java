@@ -3,7 +3,6 @@ package com.example.regis.medsystem.medicine;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.support.design.widget.BottomSheetBehavior;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
@@ -11,12 +10,24 @@ import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.widget.RelativeLayout;
+import android.view.View;
+import android.widget.ProgressBar;
+import android.widget.Toast;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonArrayRequest;
 import com.example.regis.medsystem.Drug;
 import com.example.regis.medsystem.R;
+import com.example.regis.medsystem.VolleySingle;
 import com.example.regis.medsystem.database.Medicine;
 import com.example.regis.medsystem.database.MedicineDatabase;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,15 +38,16 @@ public class MedicineActivity extends AppCompatActivity {
     RecyclerAdapter recyclerAdapter;
     List<Drug> medName = new ArrayList<>();
     List<Medicine> med = new ArrayList<>();
+    List<Medicine> medList = new ArrayList<>();
     CollapsingToolbarLayout collapsingToolbarLayout;
-    RelativeLayout relativeLayout;
-    BottomSheetBehavior bottomSheetBehavior;
+    ProgressBar progressBar;
     Context context;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_medicine);
+        progressBar = (ProgressBar) findViewById(R.id.progressBar);
         recyclerView = (RecyclerView) findViewById(R.id.recycle);
         collapsingToolbarLayout = (CollapsingToolbarLayout) findViewById(R.id.collapse);
         collapsingToolbarLayout.setTitle("Medicine");
@@ -51,20 +63,47 @@ public class MedicineActivity extends AppCompatActivity {
         addData();
         recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
         //setting a empty adpater
-        recyclerAdapter = new RecyclerAdapter(med, this);
+
         recyclerView.setAdapter(recyclerAdapter);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.addItemDecoration(new DividerItemDecoration(getApplicationContext(), DividerItemDecoration.VERTICAL));
         //calling datbase to add data
-        MedicineDatabase database = MedicineDatabase.getInstance(this);
+        /*MedicineDatabase database = MedicineDatabase.getInstance(this);
         MyAsync myAsync = new MyAsync(database);
-        myAsync.execute();
+        myAsync.execute();*/
+        RequestQueue myRequestQueue = VolleySingle.getInstance().getRequestQueue();
+        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, "http://rex7.890m.com/getData.php", null, new Response.Listener<JSONArray>() {
+            @Override
+            public void onResponse(JSONArray response) {
+                try {
+                    JSONArray js = response;
+                    for (int i = 0; i < js.length(); i++) {
+                        JSONObject obj = js.getJSONObject(i);
+                        medList.add(new Medicine(obj.getInt("drugId"), obj.getString("drugName"), obj.getString("category"), obj.getInt("price")));
+
+                    }
+
+                    recyclerAdapter = new RecyclerAdapter(medList, MedicineActivity.this);
+                    progressBar.setVisibility(View.GONE);
+                    recyclerView.setVisibility(View.VISIBLE);
+                    recyclerView.setAdapter(recyclerAdapter);
+                    recyclerAdapter.notifyDataSetChanged();
 
 
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_LONG).show();
+            }
+        });
 
 
-
-
+        myRequestQueue.add(jsonArrayRequest);
     }
 
     private class MyAsync extends AsyncTask<Object, Object, List<Medicine>> {
@@ -133,7 +172,6 @@ public class MedicineActivity extends AppCompatActivity {
         medicine.setCategory("crocin");
         medicine.setPrice(15);
         med.add(medicine);
-
 
 
     }
