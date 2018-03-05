@@ -15,6 +15,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.example.regis.medsystem.MyViewPdf;
 import com.example.regis.medsystem.R;
 
 
@@ -48,6 +49,8 @@ public class MedicineBookAdapter extends RecyclerView.Adapter<MedicineBookAdapte
             @Override
             public void onClick(View v) {
                 Toast.makeText(context, "Opening book please wait...", Toast.LENGTH_LONG).show();
+                context.startActivity(new Intent(context, MyViewPdf.class));
+
             }
         });
         holder.ic_dot.setOnClickListener(new View.OnClickListener() {

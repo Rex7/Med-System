@@ -1,7 +1,6 @@
 package com.example.regis.medsystem.medicine;
 
 import android.content.Context;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v7.app.AppCompatActivity;
@@ -23,13 +22,14 @@ import com.example.regis.medsystem.Drug;
 import com.example.regis.medsystem.R;
 import com.example.regis.medsystem.VolleySingle;
 import com.example.regis.medsystem.database.Medicine;
-import com.example.regis.medsystem.database.MedicineDatabase;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 public class MedicineActivity extends AppCompatActivity {
@@ -38,6 +38,7 @@ public class MedicineActivity extends AppCompatActivity {
     RecyclerAdapter recyclerAdapter;
     List<Drug> medName = new ArrayList<>();
     List<Medicine> med = new ArrayList<>();
+    List<MedicineData> medicineDataList = new ArrayList<>();
     List<Medicine> medList = new ArrayList<>();
     CollapsingToolbarLayout collapsingToolbarLayout;
     ProgressBar progressBar;
@@ -67,23 +68,28 @@ public class MedicineActivity extends AppCompatActivity {
         recyclerView.setAdapter(recyclerAdapter);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.addItemDecoration(new DividerItemDecoration(getApplicationContext(), DividerItemDecoration.VERTICAL));
-        //calling datbase to add data
-        /*MedicineDatabase database = MedicineDatabase.getInstance(this);
-        MyAsync myAsync = new MyAsync(database);
-        myAsync.execute();*/
+
         RequestQueue myRequestQueue = VolleySingle.getInstance().getRequestQueue();
-        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, "http://rex7.890m.com/getData.php", null, new Response.Listener<JSONArray>() {
+        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET,
+                "http://rex7.890m.com/getData.php", null, new Response.Listener<JSONArray>() {
             @Override
             public void onResponse(JSONArray response) {
                 try {
-                    JSONArray js = response;
-                    for (int i = 0; i < js.length(); i++) {
-                        JSONObject obj = js.getJSONObject(i);
+
+                    for (int i = 0; i < response.length(); i++) {
+                        JSONObject obj = response.getJSONObject(i);
                         medList.add(new Medicine(obj.getInt("drugId"), obj.getString("drugName"), obj.getString("category"), obj.getInt("price")));
-
+                        medicineDataList.add(new MedicineData(obj.getString("drugName"), obj.getString("category"), obj.getString("Usage")
+                                , obj.getString("SideEffect"), obj.getInt("price"), obj.getInt("drugId")));
                     }
+                    Collections.sort(medicineDataList, new Comparator<MedicineData>() {
+                        @Override
+                        public int compare(MedicineData o1, MedicineData o2) {
+                            return o2.getDrugName().compareTo(o1.getDrugName());
+                        }
+                    });
 
-                    recyclerAdapter = new RecyclerAdapter(medList, MedicineActivity.this);
+                    recyclerAdapter = new RecyclerAdapter(medicineDataList, MedicineActivity.this);
                     progressBar.setVisibility(View.GONE);
                     recyclerView.setVisibility(View.VISIBLE);
                     recyclerView.setAdapter(recyclerAdapter);
@@ -106,34 +112,11 @@ public class MedicineActivity extends AppCompatActivity {
         myRequestQueue.add(jsonArrayRequest);
     }
 
-    private class MyAsync extends AsyncTask<Object, Object, List<Medicine>> {
-        List<Medicine> medicines;
-
-        @Override
-        protected void onPostExecute(List<Medicine> med) {
 
 
-            recyclerView.setAdapter(new RecyclerAdapter(med, context));
-            recyclerAdapter.notifyDataSetChanged();
 
 
-        }
 
-        MedicineDatabase db;
-
-        MyAsync(MedicineDatabase db) {
-            this.db = db;
-
-        }
-
-        @Override
-        protected List<Medicine> doInBackground(Object... params) {
-
-            medicines = db.medicineDoa().getAll();
-
-            return medicines;
-        }
-    }
 
     @Override
     public void onBackPressed() {

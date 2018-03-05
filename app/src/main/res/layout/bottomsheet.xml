@@ -2,112 +2,154 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/bottom_sheet"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".medicine.MedicineActivity"
 
 
     >
 
-    <android.support.design.widget.CoordinatorLayout
+    <android.support.v7.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        app:cardElevation="4dp"
+        app:cardCornerRadius="4dp"
+
+
         android:fitsSystemWindows="true">
 
-        <RelativeLayout
-            android:id="@+id/mainBody"
+        <ScrollView android:id="@+id/scroll"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:background="#d26161"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-            <TextView
-                android:id="@+id/med_Name_bottom"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="1dp"
-                android:text="Name  :"
-                android:textColor="#000"
-                android:textSize="25sp" />
+            <RelativeLayout
+                android:id="@+id/mainBody"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
-            <TextView
-                android:id="@+id/Name"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="150dp"
-                android:layout_toRightOf="@+id/med_Name_bottom"
-                android:text="Crocin"
-                android:textColor="#000"
-                android:textSize="25sp" />
+                <TextView
+                    android:id="@+id/med_Name_bottom"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="1dp"
+                    android:text="Name  :"
+                    android:textColor="#000"
+                    android:textSize="25sp" />
 
-            <TextView
-                android:id="@+id/botton_price"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/med_Name_bottom"
-                android:layout_marginTop="25dp"
-                android:text="Price"
-                android:textColor="#000"
-                android:textSize="25sp" />
+                <TextView
+                    android:id="@+id/Name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="75dp"
+                    android:gravity="start"
+                    android:layout_toRightOf="@+id/med_Name_bottom"
+                    android:text="Crocin"
+                    android:textColor="#000"
+                    android:textSize="25sp" />
 
-            <TextView
-                android:id="@+id/botton_price_name"
+                <TextView
+                    android:id="@+id/botton_price"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/med_Name_bottom"
+                    android:layout_marginTop="25dp"
+                    android:text="Price"
+                    android:textColor="#000"
+                    android:textSize="25sp" />
 
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignBaseline="@+id/botton_price"
-                android:layout_alignBottom="@+id/botton_price"
-                android:layout_alignEnd="@+id/Name"
-                android:layout_alignRight="@+id/Name"
-                android:text="₹5"
-                android:textColor="#000"
-                android:textSize="25sp" />
+                <TextView
+                    android:id="@+id/botton_price_name"
 
-            <TextView
-                android:id="@+id/botton_Usage"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/botton_price"
-                android:layout_marginTop="25dp"
-                android:text="Usage "
-                android:textColor="#000"
-                android:textSize="25sp" />
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBaseline="@+id/botton_price"
+                    android:layout_alignBottom="@+id/botton_price"
+                    android:layout_alignEnd="@+id/Name"
+                    android:gravity="start"
+                    android:layout_marginLeft="75dp"
+                    android:layout_alignRight="@+id/Name"
+                    android:text="₹5"
+                    android:textColor="#000"
+                    android:textSize="25sp" />
 
-            <TextView
-                android:id="@+id/botton_USage_text"
+                <TextView
+                    android:id="@+id/category"
+                    android:text="Category"
+                    android:layout_marginTop="25dp"
+                    android:textColor="#000"
+                    android:textSize="25sp"
+                    android:layout_below="@+id/botton_price_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
 
-                android:layout_width="200dp"
-                android:layout_marginLeft="70dp"
-                android:layout_height="wrap_content"
-                android:layout_alignBaseline="@+id/botton_Usage"
+                <TextView
+                    android:id="@+id/category_name"
+                    android:text="Paracetomol"
+                    android:textColor="#000"
+                    android:textSize="25sp"
+                    android:gravity="start"
+                    android:layout_below="@+id/botton_price_name"
+                    android:layout_toRightOf="@+id/category"
+                    android:layout_alignBaseline="@+id/category"
+                    android:layout_marginLeft="70dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
 
 
-                android:layout_below="@+id/botton_price_name"
-                android:layout_toRightOf="@+id/botton_Usage"
-                android:text="It is used for bringing down the fever
+                <TextView
+                    android:id="@+id/botton_Usage"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/category"
+                    android:layout_marginTop="25dp"
+                    android:text="Usage "
+                    android:textColor="#000"
+                    android:textSize="25sp" />
+
+                <TextView
+                    android:id="@+id/botton_USage_text"
+
+                    android:layout_width="200dp"
+                    android:layout_marginLeft="70dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBaseline="@+id/botton_Usage"
+
+
+                    android:layout_below="@+id/category_name"
+                    android:layout_toRightOf="@+id/botton_Usage"
+                    android:text="It is used for bringing down the fever
 and bring body temperature to normal"
-                android:textColor="#000"
-                android:textSize="25sp" />
+                    android:textColor="#000"
+                    android:textSize="25sp" />
 
-            <TextView
-                android:id="@+id/sideEffects"
-                android:layout_width="150dp"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/botton_USage_text"
-                android:text="Avoid usage During"
+                <TextView
+                    android:id="@+id/sideEffects"
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/botton_USage_text"
+                    android:text="Avoid usage During"
 
-                android:textColor="#000"
-                android:textSize="25sp" />
+                    android:textColor="#000"
+                    android:textSize="25sp" />
 
-            <TextView
-                android:id="@+id/sideEffectsText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignBaseline="@+id/sideEffects"
-                android:layout_toRightOf="@+id/sideEffects"
-                android:text="Avoid Using when consumed alcohol and during pregnancy"
-                android:textColor="#000"
-                android:textSize="25sp" />
+                <TextView
+                    android:id="@+id/sideEffectsText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBaseline="@+id/sideEffects"
+                    android:layout_toRightOf="@+id/sideEffects"
+                    android:text="Avoid Using when consumed alcohol and during pregnancy"
+                    android:textColor="#000"
+                    android:textSize="25sp" />
 
 
-        </RelativeLayout>
+            </RelativeLayout>
 
-    </android.support.design.widget.CoordinatorLayout>
+        </ScrollView>
+    </android.support.v7.widget.CardView>
 
 </RelativeLayout>

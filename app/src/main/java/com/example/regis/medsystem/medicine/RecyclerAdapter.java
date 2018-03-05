@@ -12,19 +12,18 @@ import android.widget.Toast;
 
 import com.example.regis.medsystem.MyBottomSheet;
 import com.example.regis.medsystem.R;
-import com.example.regis.medsystem.database.Medicine;
 
 import java.util.List;
 
 
 
 public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHolders> {
-    private List<Medicine> medNames;
+    private List<MedicineData> medNames;
     private Context mContext;
     private RelativeLayout relativeLayout;
     private BottomSheetBehavior bottomSheetBehavior;
 
-    public RecyclerAdapter(List<Medicine> medNames, Context mContext) {
+    public RecyclerAdapter(List<MedicineData> medNames, Context mContext) {
         this.medNames = medNames;
         this.mContext=mContext;
     }
@@ -37,7 +36,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
 
     @Override
     public void onBindViewHolder(ViewHolders holder, final int position) {
-        holder.medName.setText(medNames.get(position).getMedName());
+        holder.medName.setText(medNames.get(position).getDrugName());
 
     }
 
@@ -69,7 +68,7 @@ TextView medName;
             bottomSheet.setMedicine(medNames.get(pos));
 
             bottomSheet.show(medicineActivity.getSupportFragmentManager(), bottomSheet.getTag());
-            Toast.makeText(ct, " " + medNames.get(pos).getMedName() + "\n Price " + medNames.get(pos).getPrice(), Toast.LENGTH_LONG).show();
+            Toast.makeText(ct, " " + medNames.get(pos).getDrugName() + "\n Price " + medNames.get(pos).getPrice(), Toast.LENGTH_LONG).show();
 
 
         }
