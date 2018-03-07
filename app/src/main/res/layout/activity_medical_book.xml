@@ -2,6 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:theme="@style/ThemeOverlay.AppCompat.Dark"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#c7b6b6"
@@ -20,6 +21,8 @@
             <include
                 android:id="@+id/toolbarMedBook"
                 layout="@layout/toolbar"
+                app:popupTheme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+
 
                 />
 

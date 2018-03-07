@@ -27,9 +27,9 @@ public class MedicineBookAdapter extends RecyclerView.Adapter<MedicineBookAdapte
     }
 
 
-    private String[] title = {"Essentials of Medical Pharmacology", "Clinical Methods", "Principles and practice of medicine", "Fuctional Histology", "live life"};
-    private String[] authorName = {" KD Tripathi,", "Robert", "DavidSon", "Wheater's", "Regis"};
-    private int[] bookCover = {R.drawable.medbookcover, R.drawable.medbookcover, R.drawable.mymedcover, R.drawable.medimage, R.drawable.medimage};
+    private String[] title = {"Essentials of Medical Pharmacology", "Clinical Methods", "Principles and practice of medicine", "Fuctional Histology", "Neurologist", "Gastrointestinal System"};
+    private String[] authorName = {" KD Tripathi,", "Robert Hutchison", "DavidSon", "Wheater's", "Doctor Regis", "Doctor chew"};
+    private int[] bookCover = {R.drawable.medbookcover, R.drawable.robert, R.drawable.principlesandpractice, R.drawable.functionalhistology, R.drawable.neurolo, R.drawable.gastrointestinal};
 
 
     @Override
@@ -48,9 +48,8 @@ public class MedicineBookAdapter extends RecyclerView.Adapter<MedicineBookAdapte
         holder.bookCover.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(context, "Opening book please wait...", Toast.LENGTH_LONG).show();
+                Toast.makeText(context, "Opening book please wait...", Toast.LENGTH_SHORT).show();
                 context.startActivity(new Intent(context, MyViewPdf.class));
-
             }
         });
         holder.ic_dot.setOnClickListener(new View.OnClickListener() {
@@ -108,6 +107,7 @@ public class MedicineBookAdapter extends RecyclerView.Adapter<MedicineBookAdapte
                     case R.id.download:
 
                         Snackbar snackbar = Snackbar.make(v, "download has been clicked", Snackbar.LENGTH_LONG).setAction("download", null);
+
                         snackbar.show();
                 }
                 return true;

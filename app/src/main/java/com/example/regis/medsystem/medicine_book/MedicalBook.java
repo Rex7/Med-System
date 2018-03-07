@@ -21,14 +21,16 @@ public class MedicalBook extends AppCompatActivity {
         toolbar = (Toolbar) findViewById(R.id.toolbarMedBook);
         setSupportActionBar(toolbar);
         if (getSupportActionBar() != null) {
-            getSupportActionBar().setTitle("Medicine Books");
+            getSupportActionBar().setTitle("Medical Books");
         }
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         recyclerView = (RecyclerView) findViewById(R.id.medBook);
         MedicineBookAdapter medicineBookAdapter = new MedicineBookAdapter(this);
         recyclerView.setLayoutManager(new GridLayoutManager(this, 2));
-        recyclerView.setItemAnimator(new DefaultItemAnimator());
+
         int spaceP = getResources().getDimensionPixelSize(R.dimen.spacing);
         recyclerView.addItemDecoration(new GridSpacingItemDecoration(2, spaceP, true));
+        recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setAdapter(medicineBookAdapter);
 
 

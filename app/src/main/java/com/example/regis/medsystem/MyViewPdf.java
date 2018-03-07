@@ -19,7 +19,7 @@ public class MyViewPdf extends AppCompatActivity {
         pdfView = (PDFView) findViewById(R.id.myPdfView);
         AssetManager assetManager = getResources().getAssets();
         try {
-            InputStream inputStream = assetManager.open("mydata.pdf");
+            InputStream inputStream = assetManager.open("tripathi.pdf");
             pdfView.fromAsset("mydata.pdf").load();
         } catch (IOException e) {
             e.printStackTrace();

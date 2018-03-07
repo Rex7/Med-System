@@ -22,7 +22,7 @@
             android:layout_height="220dp"
             android:clickable="true"
             android:contentDescription="cover"
-            android:scaleType="centerCrop"
+            android:scaleType="fitXY"
             android:src="@drawable/cover" />
 
         <View
