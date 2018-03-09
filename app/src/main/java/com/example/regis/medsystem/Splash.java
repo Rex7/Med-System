@@ -1,6 +1,7 @@
 package com.example.regis.medsystem;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
@@ -16,10 +17,17 @@ public class Splash extends AppCompatActivity {
     ViewPagerAdapter viewPagerAdapter;
     LinearLayout dots_layout;
     TextView dots[];
-
+    SharedPreferences pref;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        if (!isFirstTime()) {
+            startingActivity();
+        }
+
+
+
         setContentView(R.layout.activity_splash);
         viewPager = (ViewPager) findViewById(R.id.viewPager);
         viewPagerAdapter = new ViewPagerAdapter(getApplicationContext());
@@ -46,9 +54,26 @@ public class Splash extends AppCompatActivity {
 
     }
 
-    public void startMain(View view) {
+    public void startingActivity() {
+        setFirstTime(false);
         startActivity(new Intent(this, MainActivity.class));
         finish();
+    }
+    public void startMain(View view) {
+        startingActivity();
+    }
+
+    public boolean isFirstTime() {
+        pref = getApplicationContext().getSharedPreferences("welcome", MODE_PRIVATE);
+        return pref.getBoolean("firstTime", true);
+
+    }
+
+    public void setFirstTime(Boolean flag) {
+        pref = getApplicationContext().getSharedPreferences("welcome", MODE_PRIVATE);
+        SharedPreferences.Editor editor = pref.edit();
+        editor.putBoolean("firstTime", flag);
+        editor.apply();
     }
 
     public void addThreeDots(int pos) {

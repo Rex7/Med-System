@@ -5,7 +5,9 @@
         <item
             android:id="@+id/Med"
             android:icon="@drawable/ic_pill"
-            android:title="Medicine" />
+            android:title="Medicine"
+
+            />
         <item
             android:id="@+id/Symtom_analyser"
             android:icon="@mipmap/ic_launcher"

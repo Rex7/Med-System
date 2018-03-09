@@ -1,6 +1,7 @@
 package com.example.regis.medsystem;
 
 import android.content.Context;
+import android.graphics.Typeface;
 import android.support.v4.view.PagerAdapter;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -59,8 +60,10 @@ public class ViewPagerAdapter extends PagerAdapter {
 
         TextView heading = (TextView) view.findViewById(R.id.Heading);
         TextView description = (TextView) view.findViewById(R.id.description);
-
-
+        Typeface myType = Typeface.createFromAsset(context.getAssets(), "fonts/DancingScript-Regular.ttf");
+        description.setTypeface(myType);
+        Typeface myType2 = Typeface.createFromAsset(context.getAssets(), "fonts/CrimsonText-Regular.ttf");
+        heading.setTypeface(myType2);
         ImageView imageView = (ImageView) view.findViewById(R.id.imageView);
         heading.setText(headings[position]);
         description.setText(descriptions[position]);

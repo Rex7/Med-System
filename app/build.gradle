@@ -37,5 +37,7 @@ dependencies {
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
     compile 'com.google.code.gson:gson:2.8.1'
     compile 'com.github.barteksc:android-pdf-viewer:2.3.0'
+    compile 'com.karumi:dexter:4.2.0'
+
     testCompile 'junit:junit:4.12'
 }
