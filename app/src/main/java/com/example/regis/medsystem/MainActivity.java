@@ -169,11 +169,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                         .setAction("Hey am in search", null);
                 snackbar.show();
                 break;
-            case R.id.share:
-                snackbar = Snackbar.make(findViewById(R.id.CoordinateLayout), "Share", Snackbar.LENGTH_SHORT)
-                        .setActionTextColor(Color.BLUE)
-                        .setAction("Share", null);
-                snackbar.show();
+            case R.id.Register:
+                startActivity(new Intent(this, VolleyExample.class));
+
 
         }
         return true;

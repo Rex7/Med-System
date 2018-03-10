@@ -9,11 +9,11 @@
             android:orderInCategory="100"
             />
     <item
-        android:id="@+id/share"
+        android:id="@+id/Register"
         android:icon="@android:drawable/ic_menu_share"
-        android:title="Share"
+        android:title="Register"
 
-        android:orderInCategory="101" />
+        android:orderInCategory="99" />
 
 
 </menu>

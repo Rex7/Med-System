@@ -3,25 +3,106 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:padding="10dp"
+    android:background="#2e3237"
     tools:context="com.example.regis.medsystem.VolleyExample">
 
-    <android.support.design.widget.AppBarLayout
-        android:id="@+id/appbar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
 
-        <include
-            android:id="@+id/toolVolley"
-            layout="@layout/toolbar" />
-    </android.support.design.widget.AppBarLayout>
 
     <TextView
-        android:id="@+id/myData"
-        android:layout_below="@+id/appbar"
-        android:textSize="33sp"
-        android:text="Done"
-        android:layout_centerHorizontal="true"
+        android:id="@+id/title_volley"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/appbar"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="22dp"
+        android:text="MedSystem"
+        android:textColor="#d92d2d"
+        android:textSize="32sp" />
+
+    <EditText
+        android:id="@+id/input"
+        android:layout_width="320dp"
+
+        android:layout_height="60dp"
+        android:layout_below="@+id/title_volley"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
+
+        android:background="#3b4148"
+        android:textColorHint="#829bb4"
+        android:gravity="center"
+        android:hint="UserName"
+
+        android:textSize="20sp" />
+
+    <EditText
+        android:id="@+id/password"
+        android:layout_width="320dp"
+
+        android:layout_height="60dp"
+        android:layout_below="@+id/input"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="5dp"
+        android:gravity="center"
+        android:hint="password"
+        android:background="#3b4148"
+        android:textColorHint="#829bb4"
+        android:textSize="20sp" />
+
+    <EditText
+        android:id="@+id/confirmPassword"
+        android:layout_width="320dp"
+        android:layout_height="60dp"
+        android:layout_below="@+id/password"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="5dp"
+        android:background="#3b4148"
+        android:textColorHint="#829bb4"
+        android:gravity="center"
+        android:hint="confirm password"
+        android:textSize="20sp" />
+
+    <EditText
+        android:id="@+id/emailAddress"
+        android:layout_width="320dp"
+        android:layout_height="60dp"
+        android:background="#3b4148"
+        android:textColorHint="#829bb4"
+        android:layout_below="@+id/confirmPassword"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="5dp"
+        android:gravity="center"
+        android:hint="Email Address"
+        android:inputType="textEmailAddress"
+        android:textSize="20sp" />
+
+    <EditText
+        android:id="@+id/phoneNo"
+        android:layout_width="320dp"
+        android:background="#3b4148"
+        android:textColorHint="#829bb4"
+        android:layout_height="60dp"
+        android:layout_below="@+id/emailAddress"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="5dp"
+        android:gravity="center"
+        android:hint=" phoneNo +91"
+        android:inputType="phone"
+        android:maxLength="10"
+        android:textSize="20sp" />
+
+    <Button
+        android:id="@+id/register"
+        android:layout_width="320dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/phoneNo"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:background="@color/colorAccent"
+        android:text="Register"
+        android:textColor="#f4eeee"
+        android:textSize="18sp" />
+
 
 </RelativeLayout>
