@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.regis.medsystem.Login"
+    android:padding="10dp">
+
+    <TextView
+        android:id="@+id/mainTitle"
+        android:text="@string/medsystem"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="22dp"
+        android:textSize="22sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <EditText
+        android:id="@+id/phoneNoInput"
+        android:gravity="center"
+        android:layout_marginTop="22dp"
+        android:layout_below="@+id/mainTitle"
+        android:layout_centerHorizontal="true"
+        android:hint="PhoneNo"
+
+        android:layout_width="320dp"
+        android:layout_height="60dp" />
+
+    <EditText
+        android:id="@+id/PasswordInput"
+        android:gravity="center"
+        android:layout_marginTop="22dp"
+        android:layout_below="@+id/phoneNoInput"
+        android:layout_centerHorizontal="true"
+        android:hint="Password"
+        android:layout_width="320dp"
+        android:layout_height="60dp" />
+
+    <Button
+        android:id="@+id/login"
+        android:layout_marginTop="22dp"
+        android:layout_centerHorizontal="true"
+        android:text="Login"
+        android:layout_below="@+id/PasswordInput"
+        android:layout_width="320dp"
+        android:layout_height="60dp" />
+
+</RelativeLayout>
