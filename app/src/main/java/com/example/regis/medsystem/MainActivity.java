@@ -2,7 +2,6 @@ package com.example.regis.medsystem;
 
 import android.Manifest;
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -163,11 +162,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
 
         switch (item.getItemId()) {
-            case R.id.search:
-                snackbar = Snackbar.make(findViewById(R.id.CoordinateLayout), "Search", Snackbar.LENGTH_SHORT)
-                        .setActionTextColor(Color.BLUE)
-                        .setAction("Hey am in search", null);
-                snackbar.show();
+            case R.id.login:
+                startActivity(new Intent(this, Login.class));
                 break;
             case R.id.Register:
                 startActivity(new Intent(this, VolleyExample.class));
