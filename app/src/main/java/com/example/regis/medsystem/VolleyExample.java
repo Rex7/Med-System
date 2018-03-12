@@ -25,12 +25,14 @@ public class VolleyExample extends AppCompatActivity {
     TextView titleText;
     EditText username, password, confirmPassword, emailAddress, phoneNo;
     RequestQueue requestQueue;
+    SessionManage sessionManage;
     Button register;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_volley_example);
+        sessionManage = new SessionManage(getApplicationContext());
 
         titleText = (TextView) findViewById(R.id.title_volley);
         username = (EditText) findViewById(R.id.input);
@@ -67,6 +69,7 @@ public class VolleyExample extends AppCompatActivity {
                         confirmPassword.setText("");
                         emailAddress.setText("");
                         phoneNo.setText("");
+
 
                     }
                 });
