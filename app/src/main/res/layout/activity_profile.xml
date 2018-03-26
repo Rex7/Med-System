@@ -102,6 +102,16 @@
                 android:layout_marginTop="15dp"
                 android:layout_height="wrap_content" />
 
+            <Button
+                android:id="@+id/editor"
+                android:layout_width="wrap_content"
+                android:layout_below="@+id/LogOut"
+                android:layout_centerHorizontal="true"
+                android:text="editor"
+                android:textSize="22sp"
+                android:layout_marginTop="15dp"
+                android:layout_height="wrap_content" />
+
 
         </RelativeLayout>
 

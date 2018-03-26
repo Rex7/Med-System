@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.regis.medsystem.ArticleDemo">
+
+    <TextView
+        android:id="@+id/textView"
+        android:textSize="22sp"
+        android:textColor="#d21074"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="138dp"
+        android:layout_marginStart="138dp"
+        android:layout_marginTop="54dp"
+        android:text="TextView" />
+
+
+    <EditText
+        android:id="@+id/editText"
+        android:layout_marginTop="50dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:layout_below="@+id/textView"
+        android:hint="Enter Auther Name"
+        android:ems="10"
+        android:gravity="center_horizontal"
+        android:inputType="textPersonName" />
+
+    <EditText
+        android:id="@+id/titleText"
+        android:hint="Enter Title"
+        android:layout_below="@+id/editText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <EditText
+        android:id="@+id/editText2"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:hint="Write THe ARticle"
+        android:layout_below="@+id/titleText"
+        android:layout_marginTop="24dp"
+        android:ems="10"
+        android:gravity="top"
+        android:inputType="textMultiLine" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/textView"
+        android:layout_alignParentBottom="true"
+        android:layout_alignStart="@+id/textView"
+        android:layout_marginBottom="105dp"
+        android:text="Submit Article" />
+</RelativeLayout>

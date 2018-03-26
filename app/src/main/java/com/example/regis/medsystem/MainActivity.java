@@ -19,6 +19,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.regis.medsystem.medicine.MedicineActivity;
@@ -31,6 +32,8 @@ import com.karumi.dexter.listener.single.CompositePermissionListener;
 import com.karumi.dexter.listener.single.PermissionListener;
 import com.karumi.dexter.listener.single.SnackbarOnDeniedPermissionListener;
 
+import java.util.HashMap;
+
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     DrawerLayout drawerLayout;
@@ -39,8 +42,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     NavigationView nav;
     Snackbar snackbar;
     RecyclerView recyclerView;
-
+    TextView titleText;
     recycler_mainAdapter recycler_mainAdapter;
+    SessionManage sessionManage;
+    HashMap<String, String> userDetails;
 
 
     @Nullable
@@ -53,6 +58,22 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        nav = (NavigationView) findViewById(R.id.nav);
+        View header = nav.getHeaderView(0);
+        titleText = (TextView) header.findViewById(R.id.title_header);
+        sessionManage = new SessionManage(getApplicationContext());
+        if (sessionManage.isLogedIn()) {
+            Toast.makeText(getApplicationContext(), "logged In ", Toast.LENGTH_LONG).show();
+            sessionManage.getUserDetail();
+            userDetails = sessionManage.getUserDetail();
+            titleText.setText(userDetails.get("username"));
+
+        } else {
+            Toast.makeText(getApplicationContext(), "Not logged In ", Toast.LENGTH_LONG).show();
+            titleText.setText("Guest");
+        }
+
         //permission for storage
         PermissionListener permissionListener = new PermissionListener() {
             @Override
@@ -99,7 +120,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 .check();
 
 
-        nav = (NavigationView) findViewById(R.id.nav);
         nav.setNavigationItemSelectedListener(this);
         toolbar = (Toolbar) findViewById(R.id.toolBar);
         setSupportActionBar(toolbar);

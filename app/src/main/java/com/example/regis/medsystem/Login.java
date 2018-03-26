@@ -58,9 +58,12 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
 
 
                     if (message.equals("successful")) {
+                        String userName = jsonObject.get("user").toString();
 
-                        sessionManage.createSession(passwordInput.getText().toString(), phoneInput.getText().toString(), jsonObject.getString("user"));
-                        startActivity(new Intent(getApplicationContext(), Profile.class));
+                        sessionManage.createSession(passwordInput.getText().toString(), phoneInput.getText().toString(), userName);
+                        Intent intent = new Intent(getApplicationContext(), Profile.class);
+                        intent.putExtra("userName", userName);
+                        startActivity(intent);
 
                         finish();
                     } else {
