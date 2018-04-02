@@ -49,7 +49,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
 
             @Override
             public void onResponse(String response) {
-                String message = "";
+                String message;
                 JSONObject jsonObject;
 
                 try {

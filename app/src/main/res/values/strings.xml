@@ -7,6 +7,11 @@
     <string name="download">download</string>
     <string name="share">share</string>
     <string name="medsystem">MedSystem</string>
+    <string name="title">Title</string>
+    <string name="submit_article">submit article</string>
+    <string name="article">Write An Article</string>
+    <string name="author">Author Name</string>
+    <string name="profile">Profile</string>
     <string name="section">
 
         Lorem Ipsum is simply dummy text of the printing and typesetting industry.

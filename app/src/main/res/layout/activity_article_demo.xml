@@ -7,8 +7,6 @@
 
     <TextView
         android:id="@+id/textView"
-        android:textSize="22sp"
-        android:textColor="#d21074"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
@@ -17,46 +15,53 @@
         android:layout_marginLeft="138dp"
         android:layout_marginStart="138dp"
         android:layout_marginTop="54dp"
-        android:text="TextView" />
+        android:text=""
+        android:textColor="#d21074"
+        android:textSize="22sp" />
 
-
-    <EditText
-        android:id="@+id/editText"
-        android:layout_marginTop="50dp"
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/authorArticleWrapper"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-
         android:layout_below="@+id/textView"
-        android:hint="Enter Auther Name"
-        android:ems="10"
-        android:gravity="center_horizontal"
-        android:inputType="textPersonName" />
+        android:layout_height="wrap_content">
 
-    <EditText
-        android:id="@+id/titleText"
-        android:hint="Enter Title"
-        android:layout_below="@+id/editText"
+        <android.support.design.widget.TextInputEditText
+            android:hint="@string/author"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+            android:layout_height="50dp"
+            android:inputType="textMultiLine" />
+
+    </android.support.design.widget.TextInputLayout>
 
     <EditText
-        android:id="@+id/editText2"
+        android:id="@+id/titleArticle"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_below="@+id/authorArticleWrapper"
+        android:layout_marginTop="10dp"
+        android:gravity="center_horizontal"
+        android:hint="@string/title" />
+
+    <EditText
+        android:id="@+id/articleContent"
         android:layout_width="match_parent"
         android:layout_height="150dp"
-        android:hint="Write THe ARticle"
-        android:layout_below="@+id/titleText"
+        android:layout_below="@+id/titleArticle"
         android:layout_marginTop="24dp"
         android:ems="10"
         android:gravity="top"
+        android:hint="@string/article"
         android:inputType="textMultiLine" />
 
     <Button
-        android:id="@+id/button"
-        android:layout_width="wrap_content"
+        android:id="@+id/submitArticle"
+        style="@style/Widget.AppCompat.Button.Borderless"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/textView"
-        android:layout_alignParentBottom="true"
-        android:layout_alignStart="@+id/textView"
+        android:layout_below="@+id/articleContent"
         android:layout_marginBottom="105dp"
-        android:text="Submit Article" />
+        android:layout_marginTop="15dp"
+        android:background="@color/colorPrimary"
+        android:text="@string/submit_article"
+        android:textColor="#f5f2f2" />
 </RelativeLayout>

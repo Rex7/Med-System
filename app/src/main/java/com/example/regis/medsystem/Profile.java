@@ -20,7 +20,7 @@ public class Profile extends AppCompatActivity implements View.OnClickListener {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        String userName = getIntent().getExtras().get("userName").toString();
+
 
 
         sessionManage = new SessionManage(getApplicationContext());
@@ -33,7 +33,7 @@ public class Profile extends AppCompatActivity implements View.OnClickListener {
         titleName = (TextView) findViewById(R.id.title_name);
         Art = (TextView) findViewById(R.id.art);
         Count = (TextView) findViewById(R.id.count);
-        titleName.setText(userName);
+        titleName.setText(userData.get("username"));
         LogOut = (Button) findViewById(R.id.LogOut);
         edit = (Button) findViewById(R.id.editor);
         LogOut.setOnClickListener(this);

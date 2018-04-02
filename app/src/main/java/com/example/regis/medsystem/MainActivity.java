@@ -149,7 +149,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-
+        boolean status = sessionManage.isLogedIn();
 
         switch (item.getItemId()) {
             case R.id.Med:
@@ -163,6 +163,27 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 break;
             case R.id.Symtom_analyser:
                 startActivity(new Intent(this, VolleyExample.class));
+                break;
+            case R.id.manage:
+                if (status) {
+                    startActivity(new Intent(this, Profile.class));
+                } else {
+                    Snackbar snackbar = Snackbar.make(findViewById(R.id.CoordinateLayout), "You need to LogIn for that option", Snackbar.LENGTH_LONG)
+                            .setAction("NotLogedIn", null);
+                    snackbar.show();
+
+                }
+                break;
+            case R.id.logout:
+                if (status) {
+                    sessionManage.Logout();
+
+                } else {
+                    Snackbar snackbar = Snackbar.make(findViewById(R.id.CoordinateLayout), "You need to LogIn for that to work", Snackbar.LENGTH_LONG)
+                            .setAction("NotLogedIn", null);
+                    snackbar.show();
+                }
+
 
         }
 
@@ -187,6 +208,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 break;
             case R.id.Register:
                 startActivity(new Intent(this, VolleyExample.class));
+                break;
 
 
         }
