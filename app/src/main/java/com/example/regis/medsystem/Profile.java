@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -15,20 +16,22 @@ public class Profile extends AppCompatActivity implements View.OnClickListener {
     Button LogOut, edit;
     SessionManage sessionManage;
     HashMap<String, String> userData;
+    Toolbar toolbar;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-
-
         sessionManage = new SessionManage(getApplicationContext());
         sessionManage.checkLogin();
         userData = sessionManage.getUserDetail();
-
-
         setContentView(R.layout.activity_profile);
+        toolbar = (Toolbar) findViewById(R.id.toolbarProfile);
+        setSupportActionBar(toolbar);
+        if (getSupportActionBar() != null) {
+            toolbar.setTitle("Account");
+            toolbar.setLogo(R.drawable.ic_people);
+        }
         aboutMe = (TextView) findViewById(R.id.aboutMe);
         titleName = (TextView) findViewById(R.id.title_name);
         Art = (TextView) findViewById(R.id.art);

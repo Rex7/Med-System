@@ -9,27 +9,29 @@
 
             />
         <item
-            android:id="@+id/Symtom_analyser"
-            android:icon="@mipmap/ic_launcher"
-            android:title="Symtom analyser" />
+            android:id="@+id/medEnter"
+            android:icon="@drawable/ic_star"
+            android:title="Enter Medicine" />
+
     </group>
-    <item android:title="Details">
+    <item
+        android:title="Details"
+        android:id="@+id/mainMenu">
         <menu>
             <item
                 android:id="@+id/AboustUs"
                 android:icon="@drawable/ic_people"
                 android:title="About Us" />
-            <item
-                android:id="@+id/medEnter"
-                android:icon="@drawable/ic_star"
-                android:title="Enter Medicine" />
+
             <item
                 android:id="@+id/logout"
                 android:title="Logout"
+                android:visible="false"
                 android:icon="@drawable/logout" />
             <item
                 android:id="@+id/manage"
                 android:title="Account"
+                android:visible="false"
                 android:icon="@drawable/ic_settings_black_24dp" />
 
         </menu>

@@ -23,7 +23,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Login extends AppCompatActivity implements View.OnClickListener {
-    EditText phoneInput, passwordInput;
+    EditText username, password;
     RequestQueue requestQueue;
     SessionManage sessionManage;
     Button login;
@@ -32,8 +32,8 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        phoneInput = (EditText) findViewById(R.id.phoneNoInput);
-        passwordInput = (EditText) findViewById(R.id.PasswordInput);
+        username = (EditText) findViewById(R.id.usernameLogin);
+        password = (EditText) findViewById(R.id.passwordogin);
         login = (Button) findViewById(R.id.login);
         login.setOnClickListener(this);
         sessionManage = new SessionManage(getApplicationContext());
@@ -60,10 +60,11 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
                     if (message.equals("successful")) {
                         String userName = jsonObject.get("user").toString();
 
-                        sessionManage.createSession(passwordInput.getText().toString(), phoneInput.getText().toString(), userName);
-                        Intent intent = new Intent(getApplicationContext(), Profile.class);
-                        intent.putExtra("userName", userName);
+                        sessionManage.createSession(username.getText().toString(), password.getText().toString(), userName);
+                        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+
                         startActivity(intent);
+
 
                         finish();
                     } else {
@@ -86,8 +87,8 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 HashMap<String, String> data = new HashMap<>();
-                data.put("phoneNo", phoneInput.getText().toString().trim());
-                data.put("password", passwordInput.getText().toString().trim());
+                data.put("phoneNo", username.getText().toString().trim());
+                data.put("password", password.getText().toString().trim());
 
 
                 return data;

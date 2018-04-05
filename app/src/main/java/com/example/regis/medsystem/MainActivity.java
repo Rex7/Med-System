@@ -40,30 +40,36 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     ActionBarDrawerToggle actionBarDrawerToggle;
     Toolbar toolbar;
     NavigationView nav;
-    Snackbar snackbar;
     RecyclerView recyclerView;
     TextView titleText;
     recycler_mainAdapter recycler_mainAdapter;
     SessionManage sessionManage;
     HashMap<String, String> userDetails;
+    boolean status;
 
-
-    @Nullable
-    @Override
-    public View getCurrentFocus() {
-        return super.getCurrentFocus();
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        sessionManage = new SessionManage(getApplicationContext());
+        status = sessionManage.isLogedIn();
 
+
+        setContentView(R.layout.activity_main);
         nav = (NavigationView) findViewById(R.id.nav);
+        Menu menu = nav.getMenu();
+        if (status) {
+            MenuItem item = menu.findItem(R.id.mainMenu).getSubMenu().findItem(R.id.logout);
+            MenuItem item2 = menu.findItem(R.id.mainMenu).getSubMenu().findItem(R.id.manage);
+
+            item.setVisible(true);
+            item2.setVisible(true);
+        }
         View header = nav.getHeaderView(0);
         titleText = (TextView) header.findViewById(R.id.title_header);
-        sessionManage = new SessionManage(getApplicationContext());
-        if (sessionManage.isLogedIn()) {
+
+
+        if (status) {
             Toast.makeText(getApplicationContext(), "logged In ", Toast.LENGTH_LONG).show();
             sessionManage.getUserDetail();
             userDetails = sessionManage.getUserDetail();
@@ -149,8 +155,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-        boolean status = sessionManage.isLogedIn();
-
+        if (status) {
+            nav.getMenu().findItem(R.id.mainMenu).getSubMenu().findItem(R.id.logout).setVisible(true);
+        }
         switch (item.getItemId()) {
             case R.id.Med:
                 startActivity(new Intent(this, MedicineActivity.class));
@@ -161,9 +168,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             case R.id.AboustUs:
                 startActivity(new Intent(this, AboutUs.class));
                 break;
-            case R.id.Symtom_analyser:
-                startActivity(new Intent(this, VolleyExample.class));
-                break;
+
             case R.id.manage:
                 if (status) {
                     startActivity(new Intent(this, Profile.class));

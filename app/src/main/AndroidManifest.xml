@@ -50,7 +50,11 @@
         <activity android:name=".MyViewPdf" />
         <activity android:name=".Login" />
         <activity android:name=".Profile" />
-        <activity android:name=".ArticleDemo"></activity>
+        <activity
+            android:name=".ArticleDemo"
+            android:label="Editor mode">
+
+        </activity>
     </application>
 
 </manifest>

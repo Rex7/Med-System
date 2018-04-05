@@ -2,12 +2,104 @@ package com.example.regis.medsystem;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
+import android.util.Log;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
 
-public class ArticleDemo extends AppCompatActivity {
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.HashMap;
+import java.util.Map;
+
+public class ArticleDemo extends AppCompatActivity implements View.OnClickListener {
+    Toolbar toolbar;
+    RequestQueue requestQueue;
+    EditText articleTitle, articleAuthor, articleContent;
+    Button submitArticle;
+    SessionManage sessionManage;
+    String id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        sessionManage = new SessionManage(getApplicationContext());
+        String user = sessionManage.getUserDetail().get("username");
+        id = sessionManage.getUserDetail().get("phoneNo");
+        Toast.makeText(getApplicationContext(), "UserName " + user, Toast.LENGTH_LONG).show();
         setContentView(R.layout.activity_article_demo);
+        articleTitle = (EditText) findViewById(R.id.articleTitle);
+        articleAuthor = (EditText) findViewById(R.id.articleAuthorName);
+        articleContent = (EditText) findViewById(R.id.articleAuthorContent);
+        submitArticle = (Button) findViewById(R.id.submitArticle);
+        toolbar = (Toolbar) findViewById(R.id.toolbarArticle);
+        setSupportActionBar(toolbar);
+        requestQueue = VolleySingle.getInstance().getRequestQueue();
+        if (toolbar != null) {
+            toolbar.setLogo(R.drawable.ic_edit_black_24dp);
+        }
+        submitArticle.setOnClickListener(this);
+
+    }
+
+    @Override
+    public void onClick(View v) {
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, "http://rex7.890m.com/getArticle.php", new Response.Listener<String>() {
+
+
+            @Override
+            public void onResponse(String response) {
+                String message;
+                JSONObject jsonObject;
+
+                try {
+                    jsonObject = new JSONObject(response);
+                    message = jsonObject.getString("Message");
+
+
+                    if (message.equals("Article Submitted")) {
+                        Toast.makeText(getApplicationContext(), "Article submitted", Toast.LENGTH_LONG).show();
+                    } else {
+                        Toast.makeText(getApplicationContext(), "Sorry due to some error", Toast.LENGTH_LONG).show();
+                    }
+                } catch (JSONException e) {
+                    Log.v("myLog", e.getMessage());
+                }
+
+
+            }
+
+
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(getApplicationContext(), "" + error.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        }) {
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                HashMap<String, String> data = new HashMap<>();
+                data.put("articleId", id);
+                data.put("title", articleTitle.getText().toString().trim());
+                data.put("paragraph", articleContent.getText().toString()).trim();
+                data.put("authorName", articleAuthor.getText().toString().trim());
+
+
+                return data;
+
+            }
+        };
+        requestQueue.add(stringRequest);
+
     }
 }
