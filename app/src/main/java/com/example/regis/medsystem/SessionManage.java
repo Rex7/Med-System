@@ -21,6 +21,7 @@ public class SessionManage {
     private static final String PASSWORD = "password";
     private static final String EMAILID = "emailId";
     private static final String PHONENO = "phoneNo";
+    private static final String NOOFARTICLE = "noOfArticle";
 
     public SessionManage(Context context) {
         this.context = context;
@@ -28,12 +29,12 @@ public class SessionManage {
         editor = sharedPreferences.edit();
     }
 
-    public void createSession(String password, String phoneNo, String username) {
+    public void createSession(String phoneNo, String password, String username, String count) {
         editor.putBoolean(IS_LOGIN, true);
         editor.putString(USERNAME, username);
         editor.putString(PASSWORD, password);
-
         editor.putString(PHONENO, phoneNo);
+        editor.putString(NOOFARTICLE, count);
         editor.apply();
     }
 
@@ -48,6 +49,7 @@ public class SessionManage {
         user.put(PHONENO, sharedPreferences.getString(PHONENO, null));
         user.put(USERNAME, sharedPreferences.getString(USERNAME, null));
         user.put(EMAILID, sharedPreferences.getString(EMAILID, null));
+        user.put(NOOFARTICLE, sharedPreferences.getString(NOOFARTICLE, null));
         return user;
 
     }

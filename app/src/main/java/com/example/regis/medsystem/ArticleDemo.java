@@ -37,6 +37,7 @@ public class ArticleDemo extends AppCompatActivity implements View.OnClickListen
         String user = sessionManage.getUserDetail().get("username");
         id = sessionManage.getUserDetail().get("phoneNo");
         Toast.makeText(getApplicationContext(), "UserName " + user, Toast.LENGTH_LONG).show();
+        Toast.makeText(getApplicationContext(), "phone No" + id, Toast.LENGTH_LONG).show();
         setContentView(R.layout.activity_article_demo);
         articleTitle = (EditText) findViewById(R.id.articleTitle);
         articleAuthor = (EditText) findViewById(R.id.articleAuthorName);
@@ -67,10 +68,11 @@ public class ArticleDemo extends AppCompatActivity implements View.OnClickListen
                     message = jsonObject.getString("Message");
 
 
+
                     if (message.equals("Article Submitted")) {
                         Toast.makeText(getApplicationContext(), "Article submitted", Toast.LENGTH_LONG).show();
                     } else {
-                        Toast.makeText(getApplicationContext(), "Sorry due to some error", Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(), "Sorry due to some error" + message, Toast.LENGTH_LONG).show();
                     }
                 } catch (JSONException e) {
                     Log.v("myLog", e.getMessage());
@@ -90,9 +92,9 @@ public class ArticleDemo extends AppCompatActivity implements View.OnClickListen
             protected Map<String, String> getParams() throws AuthFailureError {
                 HashMap<String, String> data = new HashMap<>();
                 data.put("articleId", id);
-                data.put("title", articleTitle.getText().toString().trim());
-                data.put("paragraph", articleContent.getText().toString()).trim();
-                data.put("authorName", articleAuthor.getText().toString().trim());
+                data.put("title", articleTitle.getText().toString());
+                data.put("paragraph", articleContent.getText().toString());
+                data.put("authorName", articleAuthor.getText().toString());
 
 
                 return data;

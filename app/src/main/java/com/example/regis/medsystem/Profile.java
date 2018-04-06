@@ -46,6 +46,7 @@ public class Profile extends AppCompatActivity implements View.OnClickListener {
         Typeface typeface = Typeface.createFromAsset(getAssets(), "fonts/DancingScript-Regular.ttf");
         Art.setTypeface(typeface);
         Count.setTypeface(typeface);
+        Count.setText(sessionManage.getUserDetail().get("noOfArticle"));
         aboutMe.setTypeface(typeface);
     }
 
