@@ -17,40 +17,72 @@
 
     </android.support.design.widget.AppBarLayout>
 
-    <EditText
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/medicineLayout"
         android:layout_below="@+id/appbarLayout"
-        android:id="@+id/medicineName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Enter medicine Name" />
 
-    <EditText
-        android:id="@+id/medicineCategory"
-        android:layout_below="@+id/medicineName"
-        android:layout_width="match_parent"
-        android:hint="Enter medicine category"
-        android:layout_height="wrap_content" />
+        >
 
-    <EditText
-        android:id="@+id/medicinePrice"
-        android:layout_below="@+id/medicineCategory"
-        android:hint="Enter medicine Price"
+        <android.support.design.widget.TextInputEditText
+            android:id="@+id/medicineName"
+            android:hint="@string/enterName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/medicineCategoryLayout"
+        android:layout_below="@+id/medicineLayout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content">
+
+        <android.support.design.widget.TextInputEditText
+            android:id="@+id/medicineCategory"
+            android:hint="@string/enterCategory"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/medicinePriceLayout"
+        android:layout_below="@+id/medicineCategoryLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <android.support.design.widget.TextInputEditText
+            android:id="@+id/medicinePrice"
+            android:layout_width="match_parent"
+            android:hint="@string/enterPrice"
+            android:layout_height="wrap_content" />
+
+    </android.support.design.widget.TextInputLayout>
 
     <Button
         android:id="@+id/insert"
         android:text="Insert"
-        android:layout_below="@+id/medicinePrice"
+        style="@style/Base.Widget.AppCompat.Button.Borderless"
+        android:background="@color/colorPrimary"
+        android:textColor="#fff"
+        android:foreground="?attr/selectableItemBackgroundBorderless"
+        android:layout_below="@+id/medicinePriceLayout"
         android:layout_centerHorizontal="true"
-        android:layout_width="wrap_content"
+        android:layout_width="320dp"
         android:layout_height="wrap_content" />
 
     <Button
         android:id="@+id/showAll"
         android:text="ShowAll"
         android:layout_below="@+id/insert"
-        android:layout_width="wrap_content"
+        android:layout_width="320dp"
+        style="@style/Base.Widget.AppCompat.Button.Borderless"
+        android:background="@color/colorPrimary"
+        android:textColor="#fff"
+        android:foreground="?attr/selectableItemBackgroundBorderless"
+        android:layout_marginTop="10dp"
         android:layout_centerHorizontal="true"
         android:layout_height="wrap_content" />
 

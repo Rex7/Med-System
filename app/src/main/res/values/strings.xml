@@ -14,6 +14,10 @@
     <string name="profile">Profile</string>
     <string name="phoneNo">Phone No</string>
     <string name="password">password</string>
+    <string name="guest">Guest</string>
+    <string name="enterName">Enter Medicine Name</string>
+    <string name="enterPrice">Enter Price</string>
+    <string name="enterCategory">Enter Category</string>
     <string name="section">
 
         Lorem Ipsum is simply dummy text of the printing and typesetting industry.

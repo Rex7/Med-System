@@ -18,7 +18,6 @@ import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
-import com.example.regis.medsystem.Drug;
 import com.example.regis.medsystem.R;
 import com.example.regis.medsystem.VolleySingle;
 import com.example.regis.medsystem.database.Medicine;
