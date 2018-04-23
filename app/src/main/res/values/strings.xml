@@ -18,6 +18,8 @@
     <string name="enterName">Enter Medicine Name</string>
     <string name="enterPrice">Enter Price</string>
     <string name="enterCategory">Enter Category</string>
+    <string name="insert">Insert</string>
+    <string name="Ok">Ok</string>
     <string name="section">
 
         Lorem Ipsum is simply dummy text of the printing and typesetting industry.
