@@ -1,6 +1,7 @@
 package com.example.regis.medsystem.research;
 
 import android.content.Context;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -42,13 +43,21 @@ public class ResearchAdapter extends RecyclerView.Adapter<ResearchAdapter.ViewHo
 
     }
 
-    class ViewHolderArticle extends RecyclerView.ViewHolder {
+    class ViewHolderArticle extends RecyclerView.ViewHolder implements View.OnClickListener {
         TextView aricleTitle, articleAuthorName;
+        CardView cardView;
 
         ViewHolderArticle(Context context, View itemView) {
             super(itemView);
             aricleTitle = (TextView) itemView.findViewById(R.id.titletextArticle);
             articleAuthorName = (TextView) itemView.findViewById(R.id.authorTextArticle);
+            cardView = (CardView) itemView.findViewById(R.id.cardArticle);
+            cardView.setOnClickListener(this);
+
+        }
+
+        @Override
+        public void onClick(View v) {
 
         }
     }

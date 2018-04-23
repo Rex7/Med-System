@@ -2,16 +2,16 @@ package com.example.regis.medsystem.medicine;
 
 
 public class MedicineData {
-    String drugName, category, usage, sideEffects;
-    int price, drugId;
+    private String drugName, category, usage, sideEffects;
+    private int price, drugId;
 
-    public MedicineData(String drugName, String category, String usage, String sideEffects, int price, int drugId) {
-        this.drugName = drugName;
-        this.category = category;
-        this.usage = usage;
-        this.sideEffects = sideEffects;
-        this.price = price;
-        this.drugId = drugId;
+    MedicineData(String drugName, String category, String usage, String sideEffects, int price, int drugId) {
+        this.setDrugName(drugName);
+        this.setCategory(category);
+        this.setUsage(usage);
+        this.setSideEffects(sideEffects);
+        this.setPrice(price);
+        this.setDrugId(drugId);
     }
 
     public String getDrugName() {

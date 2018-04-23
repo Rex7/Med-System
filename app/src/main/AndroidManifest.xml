@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.example.regis.medsystem">
 
     <uses-permission android:name="android.permission.INTERNET" />
@@ -8,6 +9,7 @@
     <application
         android:name=".MyApplication"
         android:allowBackup="true"
+        android:fullBackupContent="@xml/backup_descriptor"
         android:icon="@mipmap/ic_launcher_ny"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_ny"
@@ -16,24 +18,28 @@
         <activity android:name=".MainActivity" />
         <activity
             android:name=".medicine.MedicineActivity"
-            android:parentActivityName=".MainActivity">
+            android:parentActivityName=".MainActivity"
+            tools:targetApi="jelly_bean">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity" />
         </activity>
         <activity
             android:name=".MedDetails"
-            android:parentActivityName=".medicine.MedicineActivity" />
+            android:parentActivityName=".medicine.MedicineActivity"
+            tools:targetApi="jelly_bean" />
         <activity
             android:name=".medicine_book.MedicalBook"
-            android:parentActivityName=".MainActivity">
+            android:parentActivityName=".MainActivity"
+            tools:targetApi="jelly_bean">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity" />
         </activity>
         <activity
             android:name=".AboutUs"
-            android:parentActivityName=".MainActivity">
+            android:parentActivityName=".MainActivity"
+            tools:targetApi="jelly_bean">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity" />
@@ -52,8 +58,16 @@
         <activity android:name=".Profile" />
         <activity
             android:name=".ArticleDemo"
-            android:label="Editor mode"></activity>
-        <activity android:name=".research.ResearchAndDevelop"></activity>
+            android:label="Editor mode" />
+        <activity
+            android:name=".research.ResearchAndDevelop"
+            android:parentActivityName=".MainActivity"
+            tools:targetApi="jelly_bean">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity" />
+        </activity>
+        <activity android:name=".research.ArticleContent"></activity>
     </application>
 
 </manifest>

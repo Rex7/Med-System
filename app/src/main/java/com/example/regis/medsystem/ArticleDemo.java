@@ -1,6 +1,7 @@
 package com.example.regis.medsystem;
 
 import android.os.Bundle;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
@@ -55,53 +56,66 @@ public class ArticleDemo extends AppCompatActivity implements View.OnClickListen
 
     @Override
     public void onClick(View v) {
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, "http://rex7.890m.com/getArticle.php", new Response.Listener<String>() {
+
+        if (!articleTitle.getText().toString().isEmpty() && articleAuthor.getText().toString().isEmpty() && articleContent.getText().toString().isEmpty()) {
+            StringRequest stringRequest = new StringRequest(Request.Method.POST, "http://rex7.890m.com/insertArticle.php", new Response.Listener<String>() {
 
 
-            @Override
-            public void onResponse(String response) {
-                String message;
-                JSONObject jsonObject;
+                @Override
+                public void onResponse(String response) {
+                    String message;
+                    JSONObject jsonObject;
 
-                try {
-                    jsonObject = new JSONObject(response);
-                    message = jsonObject.getString("Message");
+                    try {
+                        jsonObject = new JSONObject(response);
+                        message = jsonObject.getString("Message");
 
 
+                        if (message.equals("Article Submitted")) {
+                            Toast.makeText(getApplicationContext(), "Article submitted", Toast.LENGTH_LONG).show();
 
-                    if (message.equals("Article Submitted")) {
-                        Toast.makeText(getApplicationContext(), "Article submitted", Toast.LENGTH_LONG).show();
-                    } else {
-                        Toast.makeText(getApplicationContext(), "Sorry due to some error" + message, Toast.LENGTH_LONG).show();
+
+                        } else {
+                            Toast.makeText(getApplicationContext(), "Sorry due to some error" + message, Toast.LENGTH_LONG).show();
+                        }
+                    } catch (JSONException e) {
+                        Log.i("myLog", e.getMessage());
                     }
-                } catch (JSONException e) {
-                    Log.v("myLog", e.getMessage());
+
+
                 }
 
 
-            }
+            }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                    Toast.makeText(getApplicationContext(), "" + error.getMessage(), Toast.LENGTH_SHORT).show();
+                }
+            }) {
+                @Override
+                protected Map<String, String> getParams() throws AuthFailureError {
+                    HashMap<String, String> data = new HashMap<>();
+                    data.put("articleId", id);
+                    data.put("title", articleTitle.getText().toString());
+                    data.put("paragraph", articleContent.getText().toString());
+                    data.put("authorName", articleAuthor.getText().toString());
 
 
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                Toast.makeText(getApplicationContext(), "" + error.getMessage(), Toast.LENGTH_SHORT).show();
-            }
-        }) {
-            @Override
-            protected Map<String, String> getParams() throws AuthFailureError {
-                HashMap<String, String> data = new HashMap<>();
-                data.put("articleId", id);
-                data.put("title", articleTitle.getText().toString());
-                data.put("paragraph", articleContent.getText().toString());
-                data.put("authorName", articleAuthor.getText().toString());
+                    return data;
 
+                }
+            };
+            requestQueue.add(stringRequest);
+            articleTitle.setText("");
+            articleContent.setText("");
+            articleAuthor.setText("");
 
-                return data;
+        } else {
+            Snackbar snackbar = Snackbar.make(findViewById(R.id.relativeArticle), "Fill in all details ", Snackbar.LENGTH_LONG)
+                    .setAction("Fill in all Details", null);
+            snackbar.show();
+        }
 
-            }
-        };
-        requestQueue.add(stringRequest);
 
     }
 }

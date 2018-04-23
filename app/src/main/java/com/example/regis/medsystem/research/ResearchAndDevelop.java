@@ -43,7 +43,7 @@ public class ResearchAndDevelop extends AppCompatActivity {
         setContentView(R.layout.activity_research_and_develop);
         progressBar = (ProgressBar) findViewById(R.id.progressBarArticle);
         recyclerView = (RecyclerView) findViewById(R.id.myrecycleResearch);
-        toolbar = (Toolbar) findViewById(R.id.toolbarArticle);
+        toolbar = (Toolbar) findViewById(R.id.toolbar_research);
         context = this;
         setSupportActionBar(toolbar);
         if (getSupportActionBar() != null) {

@@ -36,7 +36,6 @@ public class MedicineActivity extends AppCompatActivity {
     RecyclerView recyclerView;
     RecyclerAdapter recyclerAdapter;
 
-    List<Medicine> med = new ArrayList<>();
     List<MedicineData> medicineDataList = new ArrayList<>();
     List<Medicine> medList = new ArrayList<>();
     CollapsingToolbarLayout collapsingToolbarLayout;
