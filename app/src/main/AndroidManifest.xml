@@ -52,9 +52,8 @@
         <activity android:name=".Profile" />
         <activity
             android:name=".ArticleDemo"
-            android:label="Editor mode">
-
-        </activity>
+            android:label="Editor mode"></activity>
+        <activity android:name=".research.ResearchAndDevelop"></activity>
     </application>
 
 </manifest>

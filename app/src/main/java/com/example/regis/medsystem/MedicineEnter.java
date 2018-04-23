@@ -17,7 +17,7 @@ public class MedicineEnter extends AppCompatActivity {
     EditText name, category, price;
     MedicineDatabase medicineDatabase;
 
-    Button insert, showAll;
+    Button insert;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,7 +27,7 @@ public class MedicineEnter extends AppCompatActivity {
         category = (EditText) findViewById(R.id.medicineCategory);
         price = (EditText) findViewById(R.id.medicinePrice);
         insert = (Button) findViewById(R.id.insert);
-        showAll = (Button) findViewById(R.id.showAll);
+
         insert.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -39,14 +39,6 @@ public class MedicineEnter extends AppCompatActivity {
                 MyAsync myAsync = new MyAsync(medicineDatabase, 1);
                 myAsync.execute(medicine);
 
-            }
-        });
-        showAll.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                medicineDatabase = MedicineDatabase.getInstance(getApplicationContext());
-                MyAsync myAsync = new MyAsync(medicineDatabase, 2);
-                myAsync.execute();
             }
         });
 

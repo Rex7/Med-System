@@ -14,6 +14,7 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.example.regis.medsystem.medicine.MedicineActivity;
 import com.example.regis.medsystem.medicine_book.MedicalBook;
+import com.example.regis.medsystem.research.ResearchAndDevelop;
 
 
 public class recycler_mainAdapter extends RecyclerView.Adapter<recycler_mainAdapter.ViewHolders> {
@@ -73,6 +74,8 @@ public class recycler_mainAdapter extends RecyclerView.Adapter<recycler_mainAdap
                         cont.startActivity(new Intent(cont, MedicineActivity.class));
                     } else if (title.getText().equals("Books")) {
                         cont.startActivity(new Intent(cont, MedicalBook.class));
+                    } else if (title.getText().equals("R&D")) {
+                        cont.startActivity(new Intent(cont, ResearchAndDevelop.class));
                     }
 
                     break;

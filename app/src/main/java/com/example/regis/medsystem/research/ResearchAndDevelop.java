@@ -1,8 +1,7 @@
-package com.example.regis.medsystem.medicine;
+package com.example.regis.medsystem.research;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.DividerItemDecoration;
@@ -20,79 +19,64 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.example.regis.medsystem.R;
 import com.example.regis.medsystem.VolleySingle;
-import com.example.regis.medsystem.database.Medicine;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
 
-public class MedicineActivity extends AppCompatActivity {
+
+public class ResearchAndDevelop extends AppCompatActivity {
     Toolbar toolbar;
     RecyclerView recyclerView;
-    RecyclerAdapter recyclerAdapter;
-
-    List<Medicine> med = new ArrayList<>();
-    List<MedicineData> medicineDataList = new ArrayList<>();
-    List<Medicine> medList = new ArrayList<>();
-    CollapsingToolbarLayout collapsingToolbarLayout;
+    ResearchAdapter researchAdapter;
     ProgressBar progressBar;
     Context context;
+    List<ArticleClass> artcileList = new ArrayList<>();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_medicine);
-        progressBar = (ProgressBar) findViewById(R.id.progressBar);
-        recyclerView = (RecyclerView) findViewById(R.id.recycle);
-        collapsingToolbarLayout = (CollapsingToolbarLayout) findViewById(R.id.collapse);
-        collapsingToolbarLayout.setTitle("Medicine");
-        toolbar = (Toolbar) findViewById(R.id.toolBar);
+        setContentView(R.layout.activity_research_and_develop);
+        progressBar = (ProgressBar) findViewById(R.id.progressBarArticle);
+        recyclerView = (RecyclerView) findViewById(R.id.myrecycleResearch);
+        toolbar = (Toolbar) findViewById(R.id.toolbarArticle);
         context = this;
-
-
         setSupportActionBar(toolbar);
         if (getSupportActionBar() != null) {
-            getSupportActionBar().setTitle("Medicine");
+            getSupportActionBar().setTitle("Research&Develop");
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
         //setting a empty adpater
 
-        recyclerView.setAdapter(recyclerAdapter);
+        recyclerView.setAdapter(researchAdapter);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.addItemDecoration(new DividerItemDecoration(getApplicationContext(), DividerItemDecoration.VERTICAL));
 
         RequestQueue myRequestQueue = VolleySingle.getInstance().getRequestQueue();
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET,
-                "http://rex7.890m.com/getData.php", null, new Response.Listener<JSONArray>() {
+                "http://rex7.890m.com/getArticle.php", null, new Response.Listener<JSONArray>() {
             @Override
             public void onResponse(JSONArray response) {
                 try {
 
                     for (int i = 0; i < response.length(); i++) {
                         JSONObject obj = response.getJSONObject(i);
-                        medList.add(new Medicine(obj.getInt("drugId"), obj.getString("drugName"), obj.getString("category"), obj.getInt("price")));
-                        medicineDataList.add(new MedicineData(obj.getString("drugName"), obj.getString("category"), obj.getString("Usage")
-                                , obj.getString("SideEffect"), obj.getInt("price"), obj.getInt("drugId")));
-                    }
-                    Collections.sort(medicineDataList, new Comparator<MedicineData>() {
-                        @Override
-                        public int compare(MedicineData o1, MedicineData o2) {
-                            return o2.getDrugName().compareTo(o1.getDrugName());
-                        }
-                    });
+                        artcileList.add(new ArticleClass(obj.getString("title"), obj.getString("authorName"), obj.getString("paragraph")));
 
-                    recyclerAdapter = new RecyclerAdapter(medicineDataList, MedicineActivity.this);
+                    }
+
+
+                    researchAdapter = new ResearchAdapter(ResearchAndDevelop.this, artcileList);
                     progressBar.setVisibility(View.GONE);
                     recyclerView.setVisibility(View.VISIBLE);
-                    recyclerView.setAdapter(recyclerAdapter);
-                    recyclerAdapter.notifyDataSetChanged();
+                    recyclerView.setAdapter(researchAdapter);
+                    researchAdapter.notifyDataSetChanged();
 
 
                 } catch (JSONException e) {
@@ -112,11 +96,5 @@ public class MedicineActivity extends AppCompatActivity {
     }
 
 
-    @Override
-    public void onBackPressed() {
-        super.onBackPressed();
-    }
-
-    //this function is just called not used anymore
-
 }
+
