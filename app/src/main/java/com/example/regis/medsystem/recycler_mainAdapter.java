@@ -17,15 +17,17 @@ import com.example.regis.medsystem.medicine_book.MedicalBook;
 import com.example.regis.medsystem.research.ResearchAndDevelop;
 
 
-public class recycler_mainAdapter extends RecyclerView.Adapter<recycler_mainAdapter.ViewHolders> {
-    Context context;
+class recycler_mainAdapter extends RecyclerView.Adapter<recycler_mainAdapter.ViewHolders> {
+    private Context context;
+    SessionManage sessionManage;
 
-    public recycler_mainAdapter(Context context) {
+    recycler_mainAdapter(Context context) {
         this.context = context;
+
     }
 
 
-    private String[] array_title = {"R&D", "Disease", "Medicine", "Books"};
+    private String[] array_title = {"R&D", "Medicine", "Books"};
     private int[] drawable_array = {R.drawable.medimage, R.drawable.mymedcover, R.drawable.medimage, R.drawable.medbookcover};
 
 
@@ -49,6 +51,7 @@ public class recycler_mainAdapter extends RecyclerView.Adapter<recycler_mainAdap
     }
 
     static class ViewHolders extends RecyclerView.ViewHolder implements View.OnClickListener {
+        private final SessionManage sessionManage;
         ImageView cover_image;
         Context cont;
         Button explore;
@@ -62,6 +65,7 @@ public class recycler_mainAdapter extends RecyclerView.Adapter<recycler_mainAdap
             title = (TextView) view.findViewById(R.id.title_adp);
             explore = (Button) view.findViewById(R.id.explore);
             explore.setOnClickListener(this);
+            sessionManage = new SessionManage(cont.getApplicationContext());
 
 
         }
@@ -73,7 +77,16 @@ public class recycler_mainAdapter extends RecyclerView.Adapter<recycler_mainAdap
                     if (title.getText().equals("Medicine")) {
                         cont.startActivity(new Intent(cont, MedicineActivity.class));
                     } else if (title.getText().equals("Books")) {
-                        cont.startActivity(new Intent(cont, MedicalBook.class));
+
+                        if (sessionManage.isLogedIn()) {
+
+                            cont.startActivity(new Intent(cont, MedicalBook.class));
+                        } else {
+                            Snackbar snackbar = Snackbar.make(v, "You need to Login to access this content", Snackbar.LENGTH_LONG)
+                                    .setAction("Need to Login", null);
+                            snackbar.show();
+                        }
+
                     } else if (title.getText().equals("R&D")) {
                         cont.startActivity(new Intent(cont, ResearchAndDevelop.class));
                     }

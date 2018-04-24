@@ -165,12 +165,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             case R.id.Med:
                 startActivity(new Intent(this, MedicineActivity.class));
                 break;
-            case R.id.medEnter:
-                startActivity(new Intent(this, MedicineEnter.class));
-                break;
-            case R.id.AboustUs:
-                startActivity(new Intent(this, AboutUs.class));
-                break;
+
 
             case R.id.manage:
                 if (status) {

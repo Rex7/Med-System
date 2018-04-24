@@ -22,6 +22,9 @@
     <string name="Ok">Ok</string>
     <string name="title_Text_article">title Text</string>
     <string name="publish">publish</string>
+    <string name="details">details</string>
+    <string name="logout">Logout</string>
+    <string name="Account">Account</string>
     <string name="section">
 
         Lorem Ipsum is simply dummy text of the printing and typesetting industry.

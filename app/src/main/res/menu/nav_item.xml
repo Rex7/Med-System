@@ -5,32 +5,32 @@
         <item
             android:id="@+id/Med"
             android:icon="@drawable/ic_pill"
-            android:title="Medicine"
+            android:title="@string/medicine"
 
             />
-        <item
-            android:id="@+id/medEnter"
-            android:icon="@drawable/ic_star"
-            android:title="Enter Medicine" />
+        <!--<item-->
+        <!--android:id="@+id/medEnter"-->
+        <!--android:icon="@drawable/ic_star"-->
+        <!--android:title="Enter Medicine" />-->
 
     </group>
     <item
-        android:title="Details"
+        android:title="@string/details"
         android:id="@+id/mainMenu">
         <menu>
-            <item
-                android:id="@+id/AboustUs"
-                android:icon="@drawable/ic_people"
-                android:title="About Us" />
+            <!--<item-->
+            <!--android:id="@+id/AboustUs"-->
+            <!--android:icon="@drawable/ic_people"-->
+            <!--android:title="About Us" />-->
 
             <item
                 android:id="@+id/logout"
-                android:title="Logout"
+                android:title="@string/logout"
                 android:visible="false"
                 android:icon="@drawable/logout" />
             <item
                 android:id="@+id/manage"
-                android:title="Account"
+                android:title="@string/Account"
                 android:visible="false"
                 android:icon="@drawable/ic_settings_black_24dp" />
 
