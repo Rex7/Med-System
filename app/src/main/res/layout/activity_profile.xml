@@ -44,7 +44,7 @@
             android:layout_height="96dp"
             android:layout_gravity="center"
             android:layout_marginTop="10dp"
-            android:src="@color/colorAccent"
+            android:src="@drawable/profileicon"
             app:civ_border_color="#FF000000"
             app:civ_border_width="2dp" />
 
@@ -115,7 +115,7 @@
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
                 android:layout_below="@+id/AboustUsId"
-                android:background="@color/colorAccent"
+                android:background="#82001a"
                 android:foreground="?attr/selectableItemBackgroundBorderless"
                 android:text="@string/editor"
                 android:textColor="#fff"
