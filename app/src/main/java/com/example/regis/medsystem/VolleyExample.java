@@ -31,7 +31,7 @@ public class VolleyExample extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_volley_example);
+        setContentView(R.layout.register_page);
         sessionManage = new SessionManage(getApplicationContext());
 
         titleText = (TextView) findViewById(R.id.title_volley);

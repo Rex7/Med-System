@@ -27,6 +27,7 @@
     <string name="publish">publish</string>
     <string name="details">details</string>
     <string name="editor">Editor</string>
+    <string name="bio">Few lines about you...</string>
     <string name="Register">Register</string>
     <string name="UserName">UserName</string>
     <string name="logout">Logout</string>
