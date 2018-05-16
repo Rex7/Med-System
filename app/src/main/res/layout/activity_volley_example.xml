@@ -97,7 +97,7 @@
         android:layout_below="@+id/phoneNo"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp"
-        android:background="@color/colorAccent"
+        android:background="#82001a"
         android:text="@string/Register"
         android:textColor="#f4eeee"
         android:textSize="18sp" />
