@@ -73,13 +73,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
 
         if (status) {
-            Toast.makeText(getApplicationContext(), "logged In ", Toast.LENGTH_LONG).show();
+
             sessionManage.getUserDetail();
             userDetails = sessionManage.getUserDetail();
             titleText.setText(userDetails.get("username"));
 
         } else {
-            Toast.makeText(getApplicationContext(), "Not logged In ", Toast.LENGTH_LONG).show();
+
             titleText.setText(getResources().getString(R.string.guest));
         }
 
@@ -198,6 +198,14 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onPrepareOptionsMenu(Menu menu) {
+        if (sessionManage.isLogedIn()) {
+            menu.getItem(1).setVisible(false);
+        }
         return true;
     }
 

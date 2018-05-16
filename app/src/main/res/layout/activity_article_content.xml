@@ -25,39 +25,45 @@
         <RelativeLayout
             android:id="@+id/child"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="match_parent">
 
-            <TextView
-                android:id="@+id/titleTextContent"
-                android:text="@string/title_Text_article"
+            <android.support.v7.widget.CardView
                 android:layout_width="match_parent"
-                android:gravity="center_horizontal"
-                android:textSize="20sp"
-                android:layout_marginTop="20dp"
-                android:textColor="@color/colorPrimaryDark"
-                android:layout_height="wrap_content" />
+                android:layout_height="match_parent">
 
-            <TextView
-                android:id="@+id/authorTextContent"
-                android:layout_below="@+id/titleTextContent"
-                android:text="@string/author"
-                android:textSize="20sp"
-                android:layout_marginTop="20dp"
-                android:gravity="center_horizontal"
-                android:textColor="@color/colorPrimaryDark"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                <TextView
+                    android:id="@+id/titleTextContent"
+                    android:text="@string/title_Text_article"
+                    android:layout_width="match_parent"
+                    android:gravity="center_horizontal"
+                    android:textSize="20sp"
+                    android:layout_marginTop="20dp"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:layout_height="wrap_content" />
 
-            <TextView
-                android:id="@+id/contentTextContent"
-                android:layout_below="@+id/authorTextContent"
-                android:text="@string/article"
-                android:gravity="center_horizontal"
-                android:textSize="20sp"
-                android:layout_marginTop="20dp"
-                android:textColor="@color/colorPrimaryDark"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                <TextView
+                    android:id="@+id/authorTextContent"
+                    android:layout_below="@+id/titleTextContent"
+                    android:text="@string/author"
+                    android:layout_marginTop="70dp"
+                    android:gravity="center_horizontal"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+                <me.biubiubiu.justifytext.library.JustifyTextView
+                    android:id="@+id/contentTextContent"
+                    android:layout_below="@+id/authorTextContent"
+                    android:text="@string/article"
+                    android:gravity="center_horizontal"
+                    android:textSize="20sp"
+                    android:layout_marginTop="150dp"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+            </android.support.v7.widget.CardView>
+
 
         </RelativeLayout>
 

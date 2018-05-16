@@ -14,6 +14,7 @@
             android:id="@+id/toolbar_medDetails"
             layout="@layout/toolbar"
 
+
             />
 
 

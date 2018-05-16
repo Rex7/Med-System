@@ -64,7 +64,7 @@
 
     <Button
         android:id="@+id/insert"
-        android:text="Insert"
+        android:text="@string/insert"
         style="@style/Base.Widget.AppCompat.Button.Borderless"
         android:background="@color/colorPrimary"
         android:textColor="#fff"

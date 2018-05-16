@@ -8,7 +8,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.regis.medsystem.R;
@@ -50,7 +49,7 @@ class ResearchAdapter extends RecyclerView.Adapter<ResearchAdapter.ViewHolderArt
     class ViewHolderArticle extends RecyclerView.ViewHolder implements View.OnClickListener {
         TextView aricleTitle, articleAuthorName;
         CardView cardView;
-        Button read;
+
         String mycontent = "";
         Context ctx;
 
@@ -60,11 +59,10 @@ class ResearchAdapter extends RecyclerView.Adapter<ResearchAdapter.ViewHolderArt
             this.ctx = context;
             aricleTitle = (TextView) itemView.findViewById(R.id.titletextArticle);
             articleAuthorName = (TextView) itemView.findViewById(R.id.authorTextArticle);
-            read = (Button) itemView.findViewById(R.id.articleButton);
 
             cardView = (CardView) itemView.findViewById(R.id.cardArticle);
+            cardView.setOnClickListener(this);
 
-            read.setOnClickListener(this);
 
         }
 
@@ -74,7 +72,6 @@ class ResearchAdapter extends RecyclerView.Adapter<ResearchAdapter.ViewHolderArt
             Intent intent = new Intent(ctx, ArticleContent.class);
             intent.putExtra("titleText", articleClassList.get(position).getTitle());
             intent.putExtra("authorName", articleClassList.get(position).getAuthorName());
-
             intent.putExtra("content", articleClassList.get(position).getContent());
             ctx.startActivity(intent);
 

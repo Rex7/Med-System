@@ -43,4 +43,5 @@ dependencies {
     compile 'de.hdodenhof:circleimageview:2.2.0'
     compile 'com.karumi:dexter:4.2.0'
     testCompile 'junit:junit:4.12'
+    compile 'me.biubiubiu.justifytext:library:1.1'
 }

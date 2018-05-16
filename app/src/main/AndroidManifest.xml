@@ -58,7 +58,7 @@
         <activity android:name=".Profile" />
         <activity
             android:name=".ArticleDemo"
-            android:label="Editor mode" />
+            android:label="Article" />
         <activity
             android:name=".research.ResearchAndDevelop"
             android:parentActivityName=".MainActivity"
@@ -67,7 +67,7 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity" />
         </activity>
-        <activity android:name=".research.ArticleContent"></activity>
+        <activity android:name=".research.ArticleContent" />
     </application>
 
 </manifest>

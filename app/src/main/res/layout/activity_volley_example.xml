@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="10dp"
-    android:background="#2e3237"
+
     tools:context="com.example.regis.medsystem.VolleyExample">
 
 
@@ -13,10 +13,10 @@
         android:id="@+id/title_volley"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/appbar"
+
         android:layout_centerHorizontal="true"
         android:layout_marginTop="22dp"
-        android:text="MedSystem"
+        android:text="@string/app_name"
         android:textColor="#d92d2d"
         android:textSize="32sp" />
 
@@ -29,25 +29,25 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="30dp"
 
-        android:background="#3b4148"
-        android:textColorHint="#829bb4"
+
+        android:textColorHint="#d92d2d"
         android:gravity="center"
-        android:hint="UserName"
+        android:hint="@string/UserName"
 
         android:textSize="20sp" />
 
     <EditText
         android:id="@+id/password"
         android:layout_width="320dp"
-
+        android:inputType="textPassword"
         android:layout_height="60dp"
         android:layout_below="@+id/input"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="5dp"
         android:gravity="center"
-        android:hint="password"
-        android:background="#3b4148"
-        android:textColorHint="#829bb4"
+        android:hint="@string/password"
+
+        android:textColorHint="#d92d2d"
         android:textSize="20sp" />
 
     <EditText
@@ -57,37 +57,35 @@
         android:layout_below="@+id/password"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="5dp"
-        android:background="#3b4148"
-        android:textColorHint="#829bb4"
+        android:inputType="textPassword"
+        android:textColorHint="#d92d2d"
         android:gravity="center"
-        android:hint="confirm password"
+        android:hint="@string/confirm_Password"
         android:textSize="20sp" />
 
     <EditText
         android:id="@+id/emailAddress"
         android:layout_width="320dp"
         android:layout_height="60dp"
-        android:background="#3b4148"
-        android:textColorHint="#829bb4"
+        android:textColorHint="#d92d2d"
         android:layout_below="@+id/confirmPassword"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="5dp"
         android:gravity="center"
-        android:hint="Email Address"
+        android:hint="@string/emailAddress"
         android:inputType="textEmailAddress"
         android:textSize="20sp" />
 
     <EditText
         android:id="@+id/phoneNo"
         android:layout_width="320dp"
-        android:background="#3b4148"
-        android:textColorHint="#829bb4"
+        android:textColorHint="#d92d2d"
         android:layout_height="60dp"
         android:layout_below="@+id/emailAddress"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="5dp"
         android:gravity="center"
-        android:hint=" phoneNo +91"
+        android:hint="@string/phoneNo"
         android:inputType="phone"
         android:maxLength="10"
         android:textSize="20sp" />
@@ -100,7 +98,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp"
         android:background="@color/colorAccent"
-        android:text="Register"
+        android:text="@string/Register"
         android:textColor="#f4eeee"
         android:textSize="18sp" />
 

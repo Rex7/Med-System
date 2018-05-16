@@ -1,7 +1,6 @@
 package com.example.regis.medsystem;
 
 import android.os.Bundle;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
@@ -35,10 +34,9 @@ public class ArticleDemo extends AppCompatActivity implements View.OnClickListen
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         sessionManage = new SessionManage(getApplicationContext());
-        String user = sessionManage.getUserDetail().get("username");
+
         id = sessionManage.getUserDetail().get("phoneNo");
-        Toast.makeText(getApplicationContext(), "UserName " + user, Toast.LENGTH_LONG).show();
-        Toast.makeText(getApplicationContext(), "phone No" + id, Toast.LENGTH_LONG).show();
+
         setContentView(R.layout.activity_article_demo);
         articleTitle = (EditText) findViewById(R.id.articleTitle);
         articleAuthor = (EditText) findViewById(R.id.articleAuthorName);
@@ -47,9 +45,7 @@ public class ArticleDemo extends AppCompatActivity implements View.OnClickListen
         toolbar = (Toolbar) findViewById(R.id.toolbarArticle);
         setSupportActionBar(toolbar);
         requestQueue = VolleySingle.getInstance().getRequestQueue();
-        if (toolbar != null) {
-            toolbar.setLogo(R.drawable.ic_edit_black_24dp);
-        }
+
         submitArticle.setOnClickListener(this);
 
     }
@@ -57,65 +53,61 @@ public class ArticleDemo extends AppCompatActivity implements View.OnClickListen
     @Override
     public void onClick(View v) {
 
-        if (!articleTitle.getText().toString().isEmpty() && articleAuthor.getText().toString().isEmpty() && articleContent.getText().toString().isEmpty()) {
-            StringRequest stringRequest = new StringRequest(Request.Method.POST, "http://rex7.890m.com/insertArticle.php", new Response.Listener<String>() {
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, "http://rex7.890m.com/insertArticle.php", new Response.Listener<String>() {
 
 
-                @Override
-                public void onResponse(String response) {
-                    String message;
-                    JSONObject jsonObject;
+            @Override
+            public void onResponse(String response) {
+                String message;
+                JSONObject jsonObject;
 
-                    try {
-                        jsonObject = new JSONObject(response);
-                        message = jsonObject.getString("Message");
-
-
-                        if (message.equals("Article Submitted")) {
-                            Toast.makeText(getApplicationContext(), "Article submitted", Toast.LENGTH_LONG).show();
+                try {
+                    jsonObject = new JSONObject(response);
+                    message = jsonObject.getString("Message");
 
 
-                        } else {
-                            Toast.makeText(getApplicationContext(), "Sorry due to some error" + message, Toast.LENGTH_LONG).show();
-                        }
-                    } catch (JSONException e) {
-                        Log.i("myLog", e.getMessage());
+                    if (message.equals("Article Submitted")) {
+                        Toast.makeText(getApplicationContext(), "Article submitted", Toast.LENGTH_LONG).show();
+                        articleAuthor.setText("");
+                        articleContent.setText("");
+                        articleTitle.setText("");
+
+
+                    } else {
+                        Toast.makeText(getApplicationContext(), "Sorry due to some error" + message, Toast.LENGTH_LONG).show();
                     }
-
-
+                } catch (JSONException e) {
+                    Log.i("myLog", e.getMessage());
                 }
 
 
-            }, new Response.ErrorListener() {
-                @Override
-                public void onErrorResponse(VolleyError error) {
-                    Toast.makeText(getApplicationContext(), "" + error.getMessage(), Toast.LENGTH_SHORT).show();
-                }
-            }) {
-                @Override
-                protected Map<String, String> getParams() throws AuthFailureError {
-                    HashMap<String, String> data = new HashMap<>();
-                    data.put("articleId", id);
-                    data.put("title", articleTitle.getText().toString());
-                    data.put("paragraph", articleContent.getText().toString());
-                    data.put("authorName", articleAuthor.getText().toString());
+            }
 
 
-                    return data;
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(getApplicationContext(), "" + error.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        }) {
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                HashMap<String, String> data = new HashMap<>();
+                data.put("articleId", id);
+                data.put("title", articleTitle.getText().toString());
+                data.put("paragraph", articleContent.getText().toString());
+                data.put("authorName", articleAuthor.getText().toString());
 
-                }
-            };
-            requestQueue.add(stringRequest);
-            articleTitle.setText("");
-            articleContent.setText("");
-            articleAuthor.setText("");
 
-        } else {
-            Snackbar snackbar = Snackbar.make(findViewById(R.id.relativeArticle), "Fill in all details ", Snackbar.LENGTH_LONG)
-                    .setAction("Fill in all Details", null);
-            snackbar.show();
-        }
+                return data;
+
+            }
+        };
+        requestQueue.add(stringRequest);
 
 
     }
+
+
 }
+
