@@ -21,7 +21,7 @@ import com.android.volley.toolbox.StringRequest;
 import java.util.HashMap;
 import java.util.Map;
 
-public class VolleyExample extends AppCompatActivity {
+public class RegistrationPage extends AppCompatActivity {
     TextView titleText;
     EditText username, password, confirmPassword, emailAddress, phoneNo;
     RequestQueue requestQueue;
