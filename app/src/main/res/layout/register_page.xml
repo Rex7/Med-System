@@ -5,14 +5,14 @@
     android:layout_height="match_parent"
     android:padding="10dp"
 
-    tools:context="com.example.regis.medsystem.VolleyExample">
+    tools:context="com.example.regis.medsystem.RegistrationPage">
 
     <TextView
         android:id="@+id/title_volley"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="22dp"
+        android:layout_marginTop="10dp"
         android:text="@string/app_name"
         android:textColor="#d92d2d"
         android:textSize="32sp" />

@@ -52,7 +52,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".VolleyExample" />
+        <activity android:name=".RegistrationPage" />
         <activity android:name=".MyViewPdf" />
         <activity android:name=".Login" />
         <activity android:name=".Profile" />

@@ -218,7 +218,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 startActivity(new Intent(this, Login.class));
                 break;
             case R.id.Register:
-                startActivity(new Intent(this, VolleyExample.class));
+                startActivity(new Intent(this, RegistrationPage.class));
                 break;
 
 
