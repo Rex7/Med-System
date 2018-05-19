@@ -3,9 +3,11 @@ package com.example.regis.medsystem;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.provider.MediaStore;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -26,15 +28,23 @@ import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
+import com.bumptech.glide.Glide;
 
 import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.util.HashMap;
 import java.util.Map;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
 public class Profile extends AppCompatActivity implements View.OnClickListener {
+
     TextView titleName, aboutMe, Art, Count;
     CircleImageView circleImageView;
     Button edit;
@@ -52,9 +62,11 @@ public class Profile extends AppCompatActivity implements View.OnClickListener {
         sessionManage.checkLogin();
         userData = sessionManage.getUserDetail();
         setContentView(R.layout.activity_profile);
+
         toolbar = (Toolbar) findViewById(R.id.toolbarProfile);
         circleImageView = (CircleImageView) findViewById(R.id.circleImage);
         circleImageView.setOnClickListener(this);
+        checkProfilePic();
         setSupportActionBar(toolbar);
         if (getSupportActionBar() != null) {
             toolbar.setTitle("Account");
@@ -117,9 +129,10 @@ public class Profile extends AppCompatActivity implements View.OnClickListener {
             Uri myUri = data.getData();
             try {
                 bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), myUri);
-                circleImageView.setImageBitmap(bitmap);
+                // circleImageView.setImageBitmap(bitmap);
+                Glide.with(this).load(myUri).asBitmap().into(circleImageView);
                 uploadImageToServer();
-
+                storeImage();
 
             } catch (IOException e) {
                 e.printStackTrace();
@@ -129,8 +142,51 @@ public class Profile extends AppCompatActivity implements View.OnClickListener {
     }
 
     public void storeImage() {
+        boolean result;
+        String path = Environment.getExternalStorageDirectory().getPath();
+        File directory = new File(path + "/profile/");
+        if (!directory.exists()) {
+            result = directory.mkdir();
+            Log.v("Result ", "Result =" + result + "path =" + path + "directory " + directory.getAbsolutePath());
+        } else {
 
+
+            File file = new File(directory, sessionManage.getUserDetail().get("phoneNo") + ".jpg");
+
+
+            OutputStream outputStream;
+            try {
+                outputStream = new FileOutputStream(file);
+                bitmap.compress(Bitmap.CompressFormat.JPEG, 100, outputStream);
+                outputStream.flush();
+                outputStream.close();
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
     }
+
+
+    public void checkProfilePic() {
+        String path = Environment.getExternalStorageDirectory().getPath();
+        File directory = new File(path + "/profile/");
+        File file = new File(directory, sessionManage.getUserDetail().get("phoneNo") + ".jpg");
+
+        if (file.exists()) {
+            Log.v("FILeExist", "" + file.exists());
+            InputStream in;
+            try {
+                in = new FileInputStream(file);
+                Bitmap myBit = BitmapFactory.decodeStream(in);
+                circleImageView.setImageBitmap(myBit);
+
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
 
     public void uploadImageToServer() {
         requestQueue = VolleySingle.getInstance().getRequestQueue();
@@ -139,7 +195,6 @@ public class Profile extends AppCompatActivity implements View.OnClickListener {
 
             @Override
             public void onResponse(String response) {
-                String message;
                 Log.v("message", "" + response);
                 if (response.equals("successful")) {
                     Toast.makeText(getApplicationContext(), "changed dp", Toast.LENGTH_LONG).show();

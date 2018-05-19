@@ -2,8 +2,11 @@ package com.example.regis.medsystem;
 
 import android.Manifest;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Environment;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.annotation.RequiresApi;
@@ -18,6 +21,7 @@ import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -34,7 +38,13 @@ import com.karumi.dexter.listener.single.CompositePermissionListener;
 import com.karumi.dexter.listener.single.PermissionListener;
 import com.karumi.dexter.listener.single.SnackbarOnDeniedPermissionListener;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.InputStream;
 import java.util.HashMap;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
@@ -47,6 +57,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     recycler_mainAdapter recycler_mainAdapter;
     SessionManage sessionManage;
     HashMap<String, String> userDetails;
+    CircleImageView circleImageView;
     boolean status;
 
 
@@ -56,9 +67,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         super.onCreate(savedInstanceState);
         sessionManage = new SessionManage(getApplicationContext());
         status = sessionManage.isLogedIn();
-
-
         setContentView(R.layout.activity_main);
+
         nav = (NavigationView) findViewById(R.id.nav);
         Menu menu = nav.getMenu();
         if (status) {
@@ -70,6 +80,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         }
         View header = nav.getHeaderView(0);
         titleText = (TextView) header.findViewById(R.id.title_header);
+        circleImageView = (CircleImageView) header.findViewById(R.id.profile_pic_nav);
 
 
         if (status) {
@@ -77,11 +88,14 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             sessionManage.getUserDetail();
             userDetails = sessionManage.getUserDetail();
             titleText.setText(userDetails.get("username"));
+            checkProfilePic();
+
 
         } else {
 
             titleText.setText(getResources().getString(R.string.guest));
         }
+
 
         //permission for storage
         PermissionListener permissionListener = new PermissionListener() {
@@ -154,6 +168,26 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     protected void onPostCreate(@Nullable Bundle savedInstanceState) {
         super.onPostCreate(savedInstanceState);
         actionBarDrawerToggle.syncState();
+        checkProfilePic();
+    }
+
+    public void checkProfilePic() {
+        String path = Environment.getExternalStorageDirectory().getPath();
+        File directory = new File(path + "/profile/");
+        File file = new File(directory, sessionManage.getUserDetail().get("phoneNo") + ".jpg");
+
+        if (file.exists()) {
+            Log.v("FILeExist", "" + file.exists());
+            InputStream in;
+            try {
+                in = new FileInputStream(file);
+                Bitmap myBit = BitmapFactory.decodeStream(in);
+                circleImageView.setImageBitmap(myBit);
+
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            }
+        }
     }
 
     @Override
@@ -205,6 +239,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public boolean onPrepareOptionsMenu(Menu menu) {
         if (sessionManage.isLogedIn()) {
             menu.getItem(1).setVisible(false);
+
         }
         return true;
     }
