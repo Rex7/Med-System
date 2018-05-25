@@ -20,7 +20,6 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.example.regis.medsystem.R;
 import com.example.regis.medsystem.VolleySingle;
-import com.example.regis.medsystem.database.Medicine;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -37,7 +36,7 @@ public class MedicineActivity extends AppCompatActivity {
     RecyclerAdapter recyclerAdapter;
 
     List<MedicineData> medicineDataList = new ArrayList<>();
-    List<Medicine> medList = new ArrayList<>();
+
     CollapsingToolbarLayout collapsingToolbarLayout;
     ProgressBar progressBar;
     Context context;
@@ -76,7 +75,6 @@ public class MedicineActivity extends AppCompatActivity {
 
                     for (int i = 0; i < response.length(); i++) {
                         JSONObject obj = response.getJSONObject(i);
-                        medList.add(new Medicine(obj.getInt("drugId"), obj.getString("drugName"), obj.getString("category"), obj.getInt("price")));
                         medicineDataList.add(new MedicineData(obj.getString("drugName"), obj.getString("category"), obj.getString("Usage")
                                 , obj.getString("SideEffect"), obj.getInt("price"), obj.getInt("drugId")));
                     }

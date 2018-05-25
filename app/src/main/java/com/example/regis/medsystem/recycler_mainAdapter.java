@@ -28,7 +28,7 @@ class recycler_mainAdapter extends RecyclerView.Adapter<recycler_mainAdapter.Vie
 
 
     private String[] array_title = {"R&D", "Medicine", "Books"};
-    private int[] drawable_array = {R.drawable.medimage, R.drawable.mymedcover, R.drawable.medimage, R.drawable.medbookcover};
+    private int[] drawable_array = {R.drawable.medimage, R.drawable.medimage, R.drawable.medimage, R.drawable.medbookcover};
 
 
     @Override

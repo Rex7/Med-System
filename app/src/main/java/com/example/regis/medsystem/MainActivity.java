@@ -245,6 +245,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
     @Override
+    protected void onResume() {
+        super.onResume();
+        checkProfilePic();
+    }
+
+    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
 

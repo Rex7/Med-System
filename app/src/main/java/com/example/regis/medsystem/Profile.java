@@ -6,6 +6,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Typeface;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
@@ -29,6 +30,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.bumptech.glide.Glide;
+import com.example.regis.medsystem.cloud.CloudinaryClient;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -42,6 +44,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 import de.hdodenhof.circleimageview.CircleImageView;
+
+import static junit.framework.Assert.assertEquals;
 
 public class Profile extends AppCompatActivity implements View.OnClickListener {
 
@@ -131,7 +135,9 @@ public class Profile extends AppCompatActivity implements View.OnClickListener {
                 bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), myUri);
                 // circleImageView.setImageBitmap(bitmap);
                 Glide.with(this).load(myUri).asBitmap().into(circleImageView);
+
                 uploadImageToServer();
+
                 storeImage();
 
             } catch (IOException e) {
@@ -162,7 +168,7 @@ public class Profile extends AppCompatActivity implements View.OnClickListener {
                 outputStream.close();
 
             } catch (IOException e) {
-                e.printStackTrace();
+               Log.v("IOException my deear","");
             }
         }
     }
@@ -188,7 +194,29 @@ public class Profile extends AppCompatActivity implements View.OnClickListener {
     }
 
 
+    public void callNetwork(){
+        CloudinaryClient cloudinaryClient=new CloudinaryClient();
+        String path = Environment.getExternalStorageDirectory().getPath();
+
+        File directory = new File(path + "/profile/");
+        File file = new File(directory, sessionManage.getUserDetail().get("phoneNo") + ".jpg");
+        Log.v("file name ","File "+file.getName());
+        Log.v("StringPath","path"+file.getAbsolutePath());
+        cloudinaryClient.uploadImage(file.getAbsolutePath(),file.getName());
+    }
+    class  MyAsync extends AsyncTask<String,Void,Void> {
+
+
+        @Override
+        protected Void doInBackground(String... params) {
+            callNetwork();
+            return null;
+        }
+    }
     public void uploadImageToServer() {
+        MyAsync myAsync=new MyAsync();
+        myAsync.execute();
+
         requestQueue = VolleySingle.getInstance().getRequestQueue();
         StringRequest stringRequest = new StringRequest(Request.Method.POST, "http://rex7.890m.com/upload.php", new Response.Listener<String>() {
 
