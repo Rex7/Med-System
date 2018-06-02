@@ -3,9 +3,9 @@ package com.example.regis.medsystem;
 import android.app.Application;
 import android.content.Context;
 
-/**
- * Created by Regis on 19-02-2018.
- */
+import com.cloudinary.android.MediaManager;
+import com.example.regis.medsystem.cloud.CloudinaryConf;
+
 
 public class MyApplication extends Application {
     private static MyApplication myApplication = null;
@@ -13,7 +13,10 @@ public class MyApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
+
         myApplication = this;
+
+        MediaManager.init(MyApplication.getApplicationConext(),CloudinaryConf.getConfig());
     }
 
 

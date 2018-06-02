@@ -16,7 +16,8 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_ny"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme"
+        tools:ignore="AllowBackup">
         <activity android:name=".MainActivity" />
         <activity
             android:name=".medicine.MedicineActivity"
@@ -54,7 +55,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".RegistrationPage" />
+        <activity android:name=".RegistrationPage"
+            android:windowSoftInputMode="adjustResize"/>
         <activity android:name=".MyViewPdf" />
         <activity android:name=".Login" />
         <activity android:name=".Profile" />

@@ -5,7 +5,8 @@
     android:layout_height="match_parent"
     android:padding="10dp"
 
-    tools:context="com.example.regis.medsystem.RegistrationPage">
+    tools:context="com.example.regis.medsystem.RegistrationPage"
+    android:fitsSystemWindows="true">
 
     <TextView
         android:id="@+id/title_volley"

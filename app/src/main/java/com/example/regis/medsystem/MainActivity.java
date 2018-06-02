@@ -28,6 +28,8 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
+import com.example.regis.medsystem.cloud.CloudinaryClient;
 import com.example.regis.medsystem.medicine.MedicineActivity;
 import com.karumi.dexter.Dexter;
 import com.karumi.dexter.PermissionToken;
@@ -59,6 +61,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     HashMap<String, String> userDetails;
     CircleImageView circleImageView;
     boolean status;
+    CloudinaryClient cloudinaryClient=new CloudinaryClient();
 
 
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
@@ -69,7 +72,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         status = sessionManage.isLogedIn();
         setContentView(R.layout.activity_main);
 
-        nav = (NavigationView) findViewById(R.id.nav);
+        nav = findViewById(R.id.nav);
         Menu menu = nav.getMenu();
         if (status) {
             MenuItem item = menu.findItem(R.id.mainMenu).getSubMenu().findItem(R.id.logout);
@@ -79,8 +82,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             item2.setVisible(true);
         }
         View header = nav.getHeaderView(0);
-        titleText = (TextView) header.findViewById(R.id.title_header);
-        circleImageView = (CircleImageView) header.findViewById(R.id.profile_pic_nav);
+        titleText = header.findViewById(R.id.title_header);
+        circleImageView = header.findViewById(R.id.profile_pic_nav);
 
 
         if (status) {
@@ -144,17 +147,17 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
 
         nav.setNavigationItemSelectedListener(this);
-        toolbar = (Toolbar) findViewById(R.id.toolBar);
+        toolbar =  findViewById(R.id.toolBar);
         setSupportActionBar(toolbar);
         //DrawerLayout declaration
-        recyclerView = (RecyclerView) findViewById(R.id.recycler_main);
+        recyclerView =  findViewById(R.id.recycler_main);
         recycler_mainAdapter = new recycler_mainAdapter(this);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(recycler_mainAdapter);
 
 
-        drawerLayout = (DrawerLayout) findViewById(R.id.drawer);
+        drawerLayout =  findViewById(R.id.drawer);
         actionBarDrawerToggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar,
                 R.string.open_navigation, R.string.close_navigation);
 
@@ -187,6 +190,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
             }
+        }
+        else{
+            Log.v("RexCalling","noImage File");
+
+            Glide.with(this)
+                    .load(cloudinaryClient.getImage(sessionManage.getUserDetail().get("phoneNo")+".jpg"))
+                    .into(circleImageView);
         }
     }
 
@@ -224,7 +234,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         }
 
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer);
+        DrawerLayout drawer =  findViewById(R.id.drawer);
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }

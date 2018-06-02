@@ -1,5 +1,6 @@
 package com.example.regis.medsystem;
 
+import android.annotation.SuppressLint;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -45,8 +46,6 @@ import java.util.Map;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
-import static junit.framework.Assert.assertEquals;
-
 public class Profile extends AppCompatActivity implements View.OnClickListener {
 
     TextView titleName, aboutMe, Art, Count;
@@ -57,6 +56,7 @@ public class Profile extends AppCompatActivity implements View.OnClickListener {
     Toolbar toolbar;
     Bitmap bitmap;
     RequestQueue requestQueue;
+    CloudinaryClient  cloudinaryClient =new CloudinaryClient();
     private final int code = 1001;
 
     @Override
@@ -67,8 +67,9 @@ public class Profile extends AppCompatActivity implements View.OnClickListener {
         userData = sessionManage.getUserDetail();
         setContentView(R.layout.activity_profile);
 
-        toolbar = (Toolbar) findViewById(R.id.toolbarProfile);
-        circleImageView = (CircleImageView) findViewById(R.id.circleImage);
+
+        toolbar =  findViewById(R.id.toolbarProfile);
+        circleImageView =  findViewById(R.id.circleImage);
         circleImageView.setOnClickListener(this);
         checkProfilePic();
         setSupportActionBar(toolbar);
@@ -76,13 +77,13 @@ public class Profile extends AppCompatActivity implements View.OnClickListener {
             toolbar.setTitle("Account");
 
         }
-        aboutMe = (TextView) findViewById(R.id.aboutMe);
-        titleName = (TextView) findViewById(R.id.title_name);
-        Art = (TextView) findViewById(R.id.art);
-        Count = (TextView) findViewById(R.id.count);
+        aboutMe = findViewById(R.id.aboutMe);
+        titleName =  findViewById(R.id.title_name);
+        Art =  findViewById(R.id.art);
+        Count =  findViewById(R.id.count);
         titleName.setText(userData.get("username"));
 
-        edit = (Button) findViewById(R.id.editor);
+        edit =  findViewById(R.id.editor);
 
         edit.setOnClickListener(this);
 
@@ -134,7 +135,9 @@ public class Profile extends AppCompatActivity implements View.OnClickListener {
             try {
                 bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), myUri);
                 // circleImageView.setImageBitmap(bitmap);
-                Glide.with(this).load(myUri).asBitmap().into(circleImageView);
+                Glide.with(this)
+                        .load(myUri).asBitmap()
+                        .into(circleImageView);
 
                 uploadImageToServer();
 
@@ -191,19 +194,27 @@ public class Profile extends AppCompatActivity implements View.OnClickListener {
                 e.printStackTrace();
             }
         }
+        else{
+            Log.v("RexCalling","noImage File");
+
+            Glide.with(this)
+                    .load(cloudinaryClient.getImage(sessionManage.getUserDetail().get("phoneNo")+".jpg"))
+                    .into(circleImageView);
+        }
     }
 
 
     public void callNetwork(){
-        CloudinaryClient cloudinaryClient=new CloudinaryClient();
+
         String path = Environment.getExternalStorageDirectory().getPath();
 
         File directory = new File(path + "/profile/");
         File file = new File(directory, sessionManage.getUserDetail().get("phoneNo") + ".jpg");
         Log.v("file name ","File "+file.getName());
         Log.v("StringPath","path"+file.getAbsolutePath());
-        cloudinaryClient.uploadImage(file.getAbsolutePath(),file.getName());
+        cloudinaryClient.uploadImage(file.getAbsolutePath(),sessionManage.getUserDetail().get("phoneNo"));
     }
+    @SuppressLint("StaticFieldLeak")
     class  MyAsync extends AsyncTask<String,Void,Void> {
 
 

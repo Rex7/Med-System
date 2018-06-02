@@ -34,13 +34,13 @@ public class RegistrationPage extends AppCompatActivity {
         setContentView(R.layout.register_page);
         sessionManage = new SessionManage(getApplicationContext());
 
-        titleText = (TextView) findViewById(R.id.title_volley);
-        username = (EditText) findViewById(R.id.input);
-        password = (EditText) findViewById(R.id.password);
-        confirmPassword = (EditText) findViewById(R.id.confirmPassword);
-        emailAddress = (EditText) findViewById(R.id.emailAddress);
-        phoneNo = (EditText) findViewById(R.id.phoneNo);
-        register = (Button) findViewById(R.id.register);
+        titleText =  findViewById(R.id.title_volley);
+        username = findViewById(R.id.input);
+        password =  findViewById(R.id.password);
+        confirmPassword = findViewById(R.id.confirmPassword);
+        emailAddress =  findViewById(R.id.emailAddress);
+        phoneNo =  findViewById(R.id.phoneNo);
+        register =  findViewById(R.id.register);
 
 
         Typeface typeface = Typeface.createFromAsset(getAssets(), "fonts/DancingScript-Regular.ttf");
