@@ -3,8 +3,6 @@ package com.example.regis.medsystem;
 import android.app.Application;
 import android.content.Context;
 
-import com.cloudinary.android.MediaManager;
-import com.example.regis.medsystem.cloud.CloudinaryConf;
 
 
 public class MyApplication extends Application {
@@ -16,7 +14,7 @@ public class MyApplication extends Application {
 
         myApplication = this;
 
-        MediaManager.init(MyApplication.getApplicationConext(),CloudinaryConf.getConfig());
+
     }
 
 

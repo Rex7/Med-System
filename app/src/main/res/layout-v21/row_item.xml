@@ -1,29 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
 
-<RelativeLayout android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardUseCompatPadding="true"
+    app:cardElevation="4dp"
+    app:cardCornerRadius="4dp"
 
-    <android.support.v7.widget.CardView
-        android:id="@+id/cardViewMed"
-        android:elevation="4dp"
+
+    android:layout_height="100dp">
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent">
 
+        <ImageView
+            android:id="@+id/ImageViewVertical"
+            android:layout_width="120dp"
+            android:layout_height="100dp"
+            android:contentDescription="cover"
+            android:padding="5dp"
+            android:scaleType="fitXY"
+            android:src="@drawable/amazon" />
         <TextView
-            android:id="@+id/medicine_name"
+            android:id="@+id/gameName"
             android:text="@string/app_name"
-            android:gravity="center"
-            android:layout_width="match_parent"
+            android:layout_alignBaseline="@+id/ImageViewVertical"
+            android:layout_toRightOf="@+id/ImageViewVertical"
+            android:layout_marginStart="100dp"
+            android:layout_marginTop="15dp"
+            android:textSize="25sp"
+            android:layout_width="wrap_content"
+
+            android:layout_height="wrap_content" />
+        <TextView
+            android:id="@+id/data"
+            android:text="@string/app_name"
+            android:layout_marginTop="1dp"
+            android:layout_below="@+id/gameName"
+            android:layout_marginStart="235dp"
             android:textSize="18sp"
-            android:textColor="#000"
-            android:layout_height="50dp" />
 
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </RelativeLayout>
 
-    </android.support.v7.widget.CardView>
-
-
-</RelativeLayout>
-
-
-
+</android.support.v7.widget.CardView>

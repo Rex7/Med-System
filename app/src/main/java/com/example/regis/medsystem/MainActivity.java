@@ -29,7 +29,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
-import com.example.regis.medsystem.cloud.CloudinaryClient;
 import com.example.regis.medsystem.medicine.MedicineActivity;
 import com.karumi.dexter.Dexter;
 import com.karumi.dexter.PermissionToken;
@@ -61,7 +60,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     HashMap<String, String> userDetails;
     CircleImageView circleImageView;
     boolean status;
-    CloudinaryClient cloudinaryClient=new CloudinaryClient();
+
 
 
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
@@ -194,9 +193,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         else{
             Log.v("RexCalling","noImage File");
 
-            Glide.with(this)
-                    .load(cloudinaryClient.getImage(sessionManage.getUserDetail().get("phoneNo")+".jpg"))
-                    .into(circleImageView);
+
         }
     }
 

@@ -31,7 +31,6 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.bumptech.glide.Glide;
-import com.example.regis.medsystem.cloud.CloudinaryClient;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -56,7 +55,6 @@ public class Profile extends AppCompatActivity implements View.OnClickListener {
     Toolbar toolbar;
     Bitmap bitmap;
     RequestQueue requestQueue;
-    CloudinaryClient  cloudinaryClient =new CloudinaryClient();
     private final int code = 1001;
 
     @Override
@@ -136,7 +134,7 @@ public class Profile extends AppCompatActivity implements View.OnClickListener {
                 bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), myUri);
                 // circleImageView.setImageBitmap(bitmap);
                 Glide.with(this)
-                        .load(myUri).asBitmap()
+                        .load(myUri)
                         .into(circleImageView);
 
                 uploadImageToServer();
@@ -197,9 +195,7 @@ public class Profile extends AppCompatActivity implements View.OnClickListener {
         else{
             Log.v("RexCalling","noImage File");
 
-            Glide.with(this)
-                    .load(cloudinaryClient.getImage(sessionManage.getUserDetail().get("phoneNo")+".jpg"))
-                    .into(circleImageView);
+
         }
     }
 
@@ -212,7 +208,6 @@ public class Profile extends AppCompatActivity implements View.OnClickListener {
         File file = new File(directory, sessionManage.getUserDetail().get("phoneNo") + ".jpg");
         Log.v("file name ","File "+file.getName());
         Log.v("StringPath","path"+file.getAbsolutePath());
-        cloudinaryClient.uploadImage(file.getAbsolutePath(),sessionManage.getUserDetail().get("phoneNo"));
     }
     @SuppressLint("StaticFieldLeak")
     class  MyAsync extends AsyncTask<String,Void,Void> {

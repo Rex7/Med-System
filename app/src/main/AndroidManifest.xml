@@ -11,18 +11,19 @@
 
     <application
         android:name=".MyApplication"
-
         android:icon="@mipmap/ic_launcher_ny"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_ny"
         android:supportsRtl="true"
+        tools:replace="android:appComponentFactory"
+        android:appComponentFactory="whateverString"
         android:theme="@style/AppTheme"
         tools:ignore="AllowBackup">
         <activity android:name=".MainActivity" />
         <activity
             android:name=".medicine.MedicineActivity"
             android:parentActivityName=".MainActivity"
-            tools:targetApi="jelly_bean">
+            >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity" />
@@ -30,11 +31,11 @@
         <activity
             android:name=".MedDetails"
             android:parentActivityName=".medicine.MedicineActivity"
-            tools:targetApi="jelly_bean" />
+             />
         <activity
             android:name=".medicine_book.MedicalBook"
             android:parentActivityName=".MainActivity"
-            tools:targetApi="jelly_bean">
+            >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity" />
@@ -42,7 +43,7 @@
         <activity
             android:name=".AboutUs"
             android:parentActivityName=".MainActivity"
-            tools:targetApi="jelly_bean">
+           >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity" />
@@ -66,7 +67,7 @@
         <activity
             android:name=".research.ResearchAndDevelop"
             android:parentActivityName=".MainActivity"
-            tools:targetApi="jelly_bean">
+            >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity" />

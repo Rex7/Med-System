@@ -18,13 +18,13 @@ import java.util.List;
 
 
 public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHolders> {
-    private List<MedicineData> medNames;
+    private List<AppModel> appModels;
     private Context mContext;
     private RelativeLayout relativeLayout;
     private BottomSheetBehavior bottomSheetBehavior;
 
-    public RecyclerAdapter(List<MedicineData> medNames, Context mContext) {
-        this.medNames = medNames;
+    public RecyclerAdapter(List<AppModel> appModels, Context mContext) {
+        this.appModels = appModels;
         this.mContext=mContext;
     }
 
@@ -36,24 +36,26 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
 
     @Override
     public void onBindViewHolder(ViewHolders holder, final int position) {
-        holder.medName.setText(medNames.get(position).getDrugName());
+        holder.game.setText(appModels.get(position).getName());
+        holder.data.setText(appModels.get(position).getSize());
 
     }
 
     @Override
     public int getItemCount() {
 
-        return medNames.size();
+        return appModels.size();
     }
 
     public class ViewHolders extends RecyclerView.ViewHolder implements View.OnClickListener {
-TextView medName;
+TextView game,data;
         Context ct;
 
         public ViewHolders(View itemView, Context ct) {
             super(itemView);
             this.ct = ct;
-            medName=(TextView)itemView.findViewById(R.id.medicine_name);
+            game=(TextView)itemView.findViewById(R.id.gameName);
+            data=(TextView)itemView.findViewById(R.id.data);
 
 
             itemView.setOnClickListener(this);
@@ -65,10 +67,10 @@ TextView medName;
             int pos = getAdapterPosition();
             MyBottomSheet bottomSheet = new MyBottomSheet();
             MedicineActivity medicineActivity = (MedicineActivity) mContext;
-            bottomSheet.setMedicine(medNames.get(pos));
+            bottomSheet.setMedicine(appModels.get(pos));
 
             bottomSheet.show(medicineActivity.getSupportFragmentManager(), bottomSheet.getTag());
-            Toast.makeText(ct, " " + medNames.get(pos).getDrugName() + "\n Price " + medNames.get(pos).getPrice(), Toast.LENGTH_LONG).show();
+            Toast.makeText(ct, " " + appModels.get(pos).getName() + "\n Price " + appModels.get(pos).getSize(), Toast.LENGTH_LONG).show();
 
 
         }
