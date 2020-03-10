@@ -40,8 +40,6 @@ public class MedicineActivity extends AppCompatActivity {
     Toolbar toolbar;
     RecyclerView recyclerView;
     RecyclerAdapter recyclerAdapter;
-
-    List<MedicineData> medicineDataList = new ArrayList<>();
     List<AppModel> appModels=new ArrayList<>();
 
     CollapsingToolbarLayout collapsingToolbarLayout;
@@ -52,19 +50,20 @@ public class MedicineActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_medicine);
-        progressBar = (ProgressBar) findViewById(R.id.progressBar);
-        recyclerView = (RecyclerView) findViewById(R.id.recycle);
-        collapsingToolbarLayout = (CollapsingToolbarLayout) findViewById(R.id.collapse);
+        progressBar =  findViewById(R.id.progressBar);
+        recyclerView = findViewById(R.id.recycle);
+        collapsingToolbarLayout =  findViewById(R.id.collapse);
         collapsingToolbarLayout.setTitle("Medicine");
-        toolbar = (Toolbar) findViewById(R.id.toolBar);
+        toolbar =  findViewById(R.id.toolBar);
         context = this;
 
 
         setSupportActionBar(toolbar);
         if (getSupportActionBar() != null) {
             getSupportActionBar().setTitle("App Store");
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
 
         recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
         //setting a empty adpater
